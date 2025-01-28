@@ -16,20 +16,20 @@ body {
 	line-height: 1.6;
 	word-wrap: break-word;
 	background:
-		url(..img/1.jpg) no-repeat center 0,
-		url(..img/2.jpg) no-repeat center 100px,
-		url(..img/3.jpg) no-repeat center 200px,
-		url(..img/4.jpg) no-repeat center 300px,
-		url(..img/5.jpg) no-repeat center 400px,
-		url(..img/6.jpg) no-repeat center 500px,
-		url(..img/7.jpg) no-repeat center 600px,
-		url(..img/8.jpg) no-repeat center 700px,
-		url(..img/9.jpg) no-repeat center 800px,
-		url(..img/10.jpg) no-repeat center 900px,
-		url(..img/11.jpg) no-repeat center 1000px,
-		url(..img/12.jpg) no-repeat center 1100px,
-		url(..img/bg1.png) repeat-y center 1200px,
-		hsl(0, 0%, 0%) url(..img/0.jpg) repeat-y center 1200px;
+		url(mrvixie.github.io/img/1.jpg) no-repeat center 0,
+		url(mrvixie.github.io/img/2.jpg) no-repeat center 100px,
+		url(mrvixie.github.io/img/3.jpg) no-repeat center 200px,
+		url(mrvixie.github.io/img/4.jpg) no-repeat center 300px,
+		url(mrvixie.github.io/img/5.jpg) no-repeat center 400px,
+		url(mrvixie.github.io/img/6.jpg) no-repeat center 500px,
+		url(mrvixie.github.io/img/7.jpg) no-repeat center 600px,
+		url(mrvixie.github.io/img/8.jpg) no-repeat center 700px,
+		url(mrvixie.github.io/img/9.jpg) no-repeat center 800px,
+		url(mrvixie.github.io/img/10.jpg) no-repeat center 900px,
+		url(mrvixie.github.io/img/11.jpg) no-repeat center 1000px,
+		url(mrvixie.github.io/img/12.jpg) no-repeat center 1100px,
+		url(mrvixie.github.io/img/bg1.png) repeat-y center 1200px,
+		hsl(0, 0%, 0%) url(mrvixie.github.io/img/0.jpg) repeat-y center 1200px;
 }
 
 a {
@@ -59,7 +59,7 @@ a:hover {
 	height: auto !important;
     height: 100%;
     min-height: 100%;
-	background: url(..img/13.jpg) no-repeat center bottom;
+	background: url(mrvixie.github.io/img/13.jpg) no-repeat center bottom;
 }
 
 .main {
@@ -76,7 +76,7 @@ a:hover {
 	display: block;
 	width: 461px;
 	height: 187px;
-	background: url(..img/logotype.png) no-repeat;
+	background: url(mrvixie.github.io/img/logotype.png) no-repeat;
 	opacity: 0.8;
 }
 
@@ -112,7 +112,7 @@ a:hover {
 
 .nav ul li a:hover {
     color: #fff;
-	background: url(..img/nav.png) repeat-x;
+	background: url(mrvixie.github.io/img/nav.png) repeat-x;
 }
 
 .container {
@@ -171,13 +171,13 @@ a:hover {
 
 .cal {
 	padding-left: 24px;
-	background: url(..img/icon.png) no-repeat;
+	background: url(mrvixie.github.io/img/icon.png) no-repeat;
 }
 
 .comm {
 	margin-left: 12px;
 	padding-left: 24px;
-	background: url(..img/icon.png)0 -14px;
+	background: url(mrvixie.github.io/img/icon.png)0 -14px;
 }
 
 .short-story-nav {
@@ -189,11 +189,11 @@ a:hover {
 	float: right;
 	width: 107px;
 	height: 40px;
-	background: url(..img/button.png) no-repeat;
+	background: url(mrvixie.github.io/img/button.png) no-repeat;
 }
 
 .short-story-nav-button:hover {
-	background: url(..img/button-hover.png) no-repeat;
+	background: url(mrvixie.github.io/img/button-hover.png) no-repeat;
 }
 
 .block-tags {
@@ -390,11 +390,11 @@ a:hover {
 	display: block;
 	width: 278px;
 	height: 76px;
-	background: url(..img/auth_button.png) no-repeat;
+	background: url(mrvixie.github.io/img/auth_button.png) no-repeat;
 }
 
 .block-auth-button:hover {
-	background: url(..img/auth_button.png) 0 76px;
+	background: url(mrvixie.github.io/img/auth_button.png) 0 76px;
 }
 
 .block {
@@ -412,11 +412,11 @@ a:hover {
 }
 
 .block-1-title {
-	background: url(..img/block.png) no-repeat;
+	background: url(mrvixie.github.io/img/block.png) no-repeat;
 }
 
 .block-2-title {
-	background: url(..img/block.png) 0 -51px;
+	background: url(mrvixie.github.io/img/block.png) 0 -51px;
 }
 
 .block-content {
@@ -474,7 +474,7 @@ a:hover {
 	text-align: center;
 	top: -19px;
 	height: 51px;
-	background: url(..img/25.png) repeat;
+	background: url(mrvixie.github.io/img/25.png) repeat;
 }
 
 .block-profile-header-group span {
@@ -485,7 +485,7 @@ a:hover {
 }
 
 .block-profile-content {
-	background: url(..img/50.png) repeat;
+	background: url(mrvixie.github.io/img/50.png) repeat;
 }
 
 .block-profile-content ul {
@@ -502,12 +502,12 @@ a:hover {
 .block-profile-content ul li a:hover {
 	color: #506669;
 	text-decoration: none;
-	background: url(..img/25.png) repeat;
+	background: url(mrvixie.github.io/img/25.png) repeat;
 }
 
 .block-profile-content ul li span a {
 	font-weight: bold;
-	background: url(..img/25.png) repeat;
+	background: url(mrvixie.github.io/img/25.png) repeat;
 }
 
 .message {
@@ -557,11 +557,11 @@ a:hover {
 }
 
 .bg25 {
-	background: url(..img/25.png) repeat;
+	background: url(mrvixie.github.io/img/25.png) repeat;
 }
 
 .bg50 {
-	background: url(..img/50.png) repeat;
+	background: url(mrvixie.github.io/img/50.png) repeat;
 }
 
 #spacer {
