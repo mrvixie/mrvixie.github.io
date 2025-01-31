@@ -1,7 +1,7 @@
 /*
 THIS CODE BY zoliryzik
 */
-const boxProducts = document.getElementById("products");
+const boxProducts = document.getElementById("news");
 /*
 ЗАПОЛНИТЕЛИ УСЛУГ 
 */
