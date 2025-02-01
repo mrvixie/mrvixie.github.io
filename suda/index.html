@@ -106,29 +106,38 @@
 </div>
 
 <!-- Кнопка для открытия модального окна -->
-<button id="openModalBtn" data-title="Заказать услугу" data-img="img/products/1.jpg" data-description="Компьютерная диагностика автомобиля, адаптация дросселя и др.">Открыть модальное окно</button>
-<button id="openModalBtn" data-title="Заказать услугу2" data-img="img/products/1.jpg" data-description="Компьютерная диагностика автомобиля, адаптация дросселя и др.2">Открыть модальное окно2</button>
+<!-- Кнопка для открытия модального окна -->
+<button class="openModalBtn" data-title="Заказать услугу" data-img="img/products/1.jpg" data-description="Компьютерная диагностика автомобиля, адаптация дросселя и др." data-close="close">Открыть модальное окно</button>
+
+<!-- Кнопка для открытия второго модального окна -->
+<button class="openModalBtn" data-title="Заказать другую услугу" data-img="img/products/2.jpg" data-description="Диагностика подвески, замена масла и др." data-close="close2">Открыть второе модальное окно</button>
+
 <script>
 // Получаем шаблон модального окна
 var modalTemplate = document.getElementById("modalTemplate");
 
-// Получаем кнопку, которая открывает модальное окно
-var openModalBtn = document.getElementById("openModalBtn");
+// Получаем все кнопки, которые открывают модальное окно
+var openModalBtns = document.getElementsByClassName("openModalBtn");
 
 // Получаем элемент <span>, который закрывает модальное окно
 var closeBtn = modalTemplate.getElementsByClassName("close")[0];
 
-// Когда пользователь нажимает на кнопку, открывается модальное окно с динамическим содержимым
-openModalBtn.onclick = function() {
-  var title = this.getAttribute("data-title");
-  var imgSrc = this.getAttribute("data-img");
-  var description = this.getAttribute("data-description");
-
+// Функция для открытия модального окна с динамическим содержимым
+function openModal(event) {
+  var title = event.target.getAttribute("data-title");
+  var imgSrc = event.target.getAttribute("data-img");
+  var description = event.target.getAttribute("data-description");
+  var closebut = event.target.getAttribute("data-close");
   modalTemplate.getElementsByClassName("modal-title")[0].innerText = title;
   modalTemplate.getElementsByClassName("modal-img")[0].src = imgSrc;
   modalTemplate.getElementsByClassName("modal-description")[0].innerText = description;
-
+  modalTemplate.getElementsByClassName("close")[0].innerText = closebut;
   modalTemplate.style.display = "block";
+}
+
+// Добавляем обработчик события для каждой кнопки
+for (var i = 0; i < openModalBtns.length; i++) {
+  openModalBtns[i].onclick = openModal;
 }
 
 // Когда пользователь нажмет на <span> (x), закрывается модальное окно
