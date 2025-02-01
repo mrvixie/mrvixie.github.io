@@ -88,7 +88,7 @@
 <div id="modalTemplate" class="modal">
   <div class="modal-content">
     <div class="modal-header">
-      <span class="close">&times;</span>
+      <span class="close"></span>
       <h2 class="modal-title"></h2>
     </div>
     <div class="modal-body">
@@ -126,11 +126,11 @@ function openModal(event) {
   var title = event.target.getAttribute("data-title");
   var imgSrc = event.target.getAttribute("data-img");
   var description = event.target.getAttribute("data-description");
-
+  var closebut = event.target.getAttribute("data-close");
   modalTemplate.getElementsByClassName("modal-title")[0].innerText = title;
   modalTemplate.getElementsByClassName("modal-img")[0].src = imgSrc;
   modalTemplate.getElementsByClassName("modal-description")[0].innerText = description;
-
+  modalTemplate.getElementsByClassName("close")[0].innerText = closebut;
   modalTemplate.style.display = "block";
 }
 
