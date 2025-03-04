@@ -208,11 +208,16 @@
 			    <a href="https://vk.com/laarofficial" alt="Разработано в LAAR" class="laar"></a>
 			</div>	
 		    <div class="footer-copyright">
-			    <span>DeliVix © 2025 DeliVix & Mr_Vixie & ZoLiryzik</span>
+			    <span>DeliVix © 2025 - <span id="current-year"></span> DeliVix & Mr_Vixie & ZoLiryzik</span>
 			</div>
     </div>	
 </div>
 	<script src="js/news.js"></script><!-- Подключение файла со скриптом для блоков услуг -->
-
+        <script>
+        // Получаем текущий год
+        const currentYear = new Date().getFullYear();
+        // Находим элемент с id "current-year" и устанавливаем его текстом текущий год
+        document.getElementById('current-year').textContent = currentYear;
+    </script>
 </body>
 </html>
