@@ -1,3 +1,4 @@
+/* Общие стили для всех устройств */
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
@@ -51,8 +52,55 @@ img {
     background-color: #0056b3;
 }
 
-code {
-    display: block;
-    white-space: pre-wrap;
-    word-break: break-word;
+/* --- Адаптивные стили --- */
+
+/* Под телефоны с шириной экрана до 600px */
+@media (max-width: 600px) {
+    body {
+        margin: 10px;
+    }
+
+    input {
+        width: 90%;
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+
+    img {
+        max-width: 70px;
+    }
+
+    .copy-btn {
+        padding: 5px;
+        font-size: 12px;
+    }
+}
+
+/* Под планшеты с шириной экрана до 1024px */
+@media (max-width: 1024px) {
+    input {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    img {
+        max-width: 80px;
+    }
+
+    .copy-btn {
+        font-size: 14px;
+    }
 }
