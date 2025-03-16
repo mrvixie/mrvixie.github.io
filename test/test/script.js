@@ -17,7 +17,6 @@ function populateTable(data) {
             <td>${item.title}</td>
             <td>${item.description}</td>
             <td><img src="${item.image}" alt="${item.title}"></td>
-            <td><code>${item.code}</code></td>
             <td>
                 <button class="copy-btn" onclick="copyCode(${index})">Скопировать</button>
             </td>
