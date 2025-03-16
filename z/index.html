@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коды с предпросмотром</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<h1>Список кодов</h1>
+<input type="text" id="search" placeholder="Искать код..." onkeyup="filterCodes()">
+
+<ul id="codeList"></ul>
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
+<div class="modal" id="modal">
+    <div class="modal-header">
+        <h3 id="modalTitle"></h3>
+        <span class="close-btn" onclick="closeModal()">×</span>
+    </div>
+    <p id="modalDescription"></p>
+    <pre id="modalCode"></pre>
+    <button onclick="copyCode()">Скопировать код</button>
+    <button onclick="previewCode()">Предпросмотр кода</button> <!-- Кнопка предпросмотра -->
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
