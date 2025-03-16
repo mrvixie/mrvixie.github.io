@@ -1,0 +1,14 @@
+{
+    "codes": [
+        {
+            "title": "Код 1",
+            "description": "Описание 1",
+            "code": "<code>Пример кода 1</code>"
+        },
+        {
+            "title": "Код 2",
+            "description": "Описание 2",
+            "code": "<code>Пример кода 2</code>"
+        }
+    ]
+}
