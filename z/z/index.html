@@ -121,7 +121,7 @@
             {
                 "title": "Большой код",
                 "description": "Описание большого кода",
-                "code": "dhdhdhdhehdhdh4j4hj5rhhtjrhgehhejejejeheheheh3hhehehehehejejeehehejej3jehejrjrkrjekjrjrjej3jrhrkejjdjdjehrhdjdhdhrdhhdhrhrhkysksykdy"
+                "code": "dhdhdhdhehdhdh4j{% set money = member.getAttribute(\"money\") %}\n{% require arguments.get(1) returning \"Использование: !положить <кол-во>\" %}\n{% require number(arguments.get(1)) returning \"Это не число\" %}\n{% require arguments.get(1) > 0 returning \"**Вы не можете положить отрицательную сумму в банк**\" %}\n{% set abank = arguments.get(1) %}\n{% set mbank = member.getAttribute(\"money\").value %}\n{% if mbank < abank %}\n{% return \"**У вас недостаточно денег на балансе**\" %}\n{% else %}\n{% if mbank >= abank %}\n{% do member.getAttribute(\"money\").decrement(abank) %}\n{% do member.getAttribute(\"bank\").increment(abank) %}\n**Вы успешно положили: *{{abank}}* монет в банк**\n{% endif %}{% endif %}"
             },
             {
                 "title": "Код 2",
