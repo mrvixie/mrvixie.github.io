@@ -35,4 +35,25 @@ function openModal(index) {
     document.getElementById("modalImage").src = selectedItem.image;
     document.getElementById("modalCode").innerText = selectedItem.code;
 
-    modal
+    modal.classList.remove("hidden");
+}
+
+// Копирование кода из модального окна
+function copyModalCode() {
+    const codeToCopy = document.getElementById("modalCode").innerText;
+    const tempInput = document.createElement('textarea');
+    tempInput.value = codeToCopy;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+    alert('Код скопирован в буфер обмена!');
+}
+
+// Закрытие модального окна при клике вне
+window.addEventListener("click", (event) => {
+    const modal = document.getElementById("modal");
+    if (!modal.contains(event.target) && !event.target.classList.contains("copy-btn")) {
+        modal.classList.add("hidden");
+    }
+});
