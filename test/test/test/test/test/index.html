@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коды из видео</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Коды из видео</h1>
+    <input type="text" id="search" placeholder="Поиск..." oninput="searchAndDisplay()">
+    <button id="globalDetails" onclick="showAllDetails()">Подробнее</button>
+    <div id="filteredResult"></div>
+    <table id="codeTable">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Описание</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Строки добавляются динамически -->
+        </tbody>
+    </table>
+
+    <!-- Модальное окно -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+            <img id="modalImage" src="" alt="" />
+            <pre><code id="modalCode"></code></pre>
+            <button class="copy-btn" onclick="copyModalCode()">Скопировать код</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
