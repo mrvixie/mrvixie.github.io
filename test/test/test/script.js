@@ -32,7 +32,7 @@ function openModal(index) {
     document.getElementById("modalTitle").innerText = selectedItem.title;
     document.getElementById("modalDescription").innerText = selectedItem.description;
     document.getElementById("modalImage").src = selectedItem.image;
-    document.getElementById("modalCode").innerText = selectedItem.code;
+    
 
     modal.style.display = "block";
 }
