@@ -61,7 +61,7 @@ document.querySelectorAll('.copy-button').forEach(button => {
         const text = block.getAttribute('data-text');
         const title = block.getAttribute('data-title');
         // Создание текстового файла
-        const blob = new Blob([textt]\n[textd]\n[text], { type: 'text/plain' });
+        const blob = new Blob([text], { type: 'text/plain' });
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
         link.download = `code_jb_${title}_.txt`;
