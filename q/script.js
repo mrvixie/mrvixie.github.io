@@ -129,3 +129,17 @@ document.querySelectorAll('.view-button').forEach(button => {
         }
     });
 });
+// Реализация поиска по скрытым данным (data-extra)
+const searchInput = document.getElementById('search');
+searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase();
+    document.querySelectorAll('.block').forEach(block => {
+        const text = block.getAttribute('data-text').toLowerCase();
+        const extra = block.getAttribute('data-extra').toLowerCase();
+        if (text.includes(query) || extra.includes(query) || query === "") {
+            block.classList.remove('hidden');
+        } else {
+            block.classList.add('hidden');
+        }
+    });
+});
