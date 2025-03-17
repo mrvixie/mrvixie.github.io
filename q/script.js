@@ -1,6 +1,8 @@
 // Добавление новых элементах
 const blocks = [
     {
+        codet: 'Заголовок',
+        coded: 'Описание',
         name: 'bank_vn',
         code: `{# Код для внесения денег в банк #}
 {% set money = member.getAttribute('money') %}
@@ -38,6 +40,8 @@ const container = document.getElementById('container');
 blocks.forEach(block => {
     const div = document.createElement('div');
     div.className = 'block';
+    div.setAttribute('data-textt', block.codet);
+    div.setAttribute('data-textd', block.coded);
     div.setAttribute('data-text', block.code);
     div.setAttribute('data-extra', block.extra);
     div.setAttribute('data-title', block.name);
@@ -52,10 +56,12 @@ blocks.forEach(block => {
 document.querySelectorAll('.copy-button').forEach(button => {
     button.addEventListener('click', function() {
         const block = button.parentElement;
+        const textt = block.getAttribute('data-textt');
+        const textd = block.getAttribute('data-textd');
         const text = block.getAttribute('data-text');
         const title = block.getAttribute('data-title');
         // Создание текстового файла
-        const blob = new Blob([text], { type: 'text/plain' });
+        const blob = new Blob([textt]\n[textd]\n[text], { type: 'text/plain' });
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
         link.download = `code_jb_${title}_.txt`;
