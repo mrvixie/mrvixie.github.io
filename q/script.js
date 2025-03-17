@@ -56,9 +56,10 @@ blocks.forEach(block => {
 document.querySelectorAll('.copy-button').forEach(button => {
     button.addEventListener('click', function() {
         const block = button.parentElement;
+        const text = block.getAttribute('data-textt')+'\n'+block.getAttribute('data-textd')+'\n'+block.getAttribute('data-text');
         const textt = block.getAttribute('data-textt');
         const textd = block.getAttribute('data-textd');
-        const text = block.getAttribute('data-text');
+        const textq = block.getAttribute('data-text');
         const title = block.getAttribute('data-title');
         // Создание текстового файла
         const blob = new Blob([text], { type: 'text/plain' });
