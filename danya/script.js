@@ -1,4 +1,4 @@
-// Загружаем данные из JSON и добавляем их в таблицу
+// Загружаем данные из JSON и добавляем их в таблицу 
 fetch("data.json")
     .then(response => response.json())
     .then(data => populateTable(data))
