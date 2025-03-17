@@ -47,7 +47,7 @@ blocks.forEach(block => {
     div.innerHTML = `
         ${block.label}
         <br>
-        <button class="copy-button">Копировать</button>
+        <button class="copy-button">Скачать</button>
         <button class="view-button">Просмотреть</button>
     `;
     container.appendChild(div);
