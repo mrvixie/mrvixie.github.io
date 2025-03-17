@@ -1,14 +1,11 @@
-/* Основные стили для всех экранов */
 .block {
     margin: 10px;
     padding: 10px;
     border: 1px solid black;
 }
-
 .block.hidden {
     display: none;
 }
-
 .copy-button, .view-button {
     margin-top: 5px;
     display: inline-block;
@@ -18,11 +15,9 @@
     border: none;
     cursor: pointer;
 }
-
 .copy-button:hover, .view-button:hover {
     background-color: #45a049;
 }
-
 .modal {
     display: none;
     position: fixed;
@@ -34,31 +29,10 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     border: 1px solid #ccc;
-
-    /* Ограничения по ширине и высоте */
-    max-width: 90%; /* Максимальная ширина для адаптации */
-    max-height: 80vh; /* Ограничение по высоте */
-    
-    /* Включение прокрутки, если текст слишком большой */
-    overflow-y: auto; 
-    overflow-x: hidden; /* Убираем горизонтальный скролл */
-
-    /* Отступы внутри модального окна */
-    box-sizing: border-box;
 }
-
-/* Дополнительные стили для текста */
-.modal p {
-    margin: 10px 0;
-    line-height: 1.5;
-    word-wrap: break-word; /* Перенос длинных слов */
-}
-
-
 .modal.active {
     display: block;
 }
-
 .modal-overlay {
     display: none;
     position: fixed;
@@ -69,11 +43,9 @@
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
 }
-
 .modal-overlay.active {
     display: block;
 }
-
 .close-modal {
     margin-top: 10px;
     padding: 5px 10px;
@@ -82,11 +54,9 @@
     border: none;
     cursor: pointer;
 }
-
 .close-modal:hover {
     background-color: #d32f2f;
 }
-
 #search {
     width: 100%;
     max-width: 400px;
@@ -97,68 +67,14 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     outline: none;
 }
-
 #search:focus {
     border-color: #4CAF50;
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
-
 .center-container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     height: auto;
     margin-top: 20px;
-}
-
-/* Адаптация для телефонов (максимальная ширина экрана 600px) */
-@media (max-width: 600px) {
-    #search {
-        width: 90%;
-    }
-
-    .copy-button, .view-button, .close-modal {
-        padding: 5px;
-        font-size: 14px;
-    }
-
-    .modal {
-        width: 90%;
-    }
-}
-
-/* Адаптация для планшетов (максимальная ширина экрана 1024px) */
-@media (max-width: 1024px) {
-    #search {
-        max-width: 300px;
-    }
-
-    .modal {
-        width: 80%;
-    }
-}
-
-/* Стили для больших экранов (ширина более 1024px) */
-@media (min-width: 1025px) {
-    .center-container {
-        height: 100vh;
-    }
-}
-
-/* Дополнительная адаптация для вертикальных экранов */
-@media screen and (orientation: portrait) {
-    .modal {
-        width: 95%; /* Для узких экранов в портретной ориентации */
-        max-height: 80vh; /* Ограничим высоту, чтобы не переполняло экран */
-    }
-
-    .copy-button, .view-button {
-        width: 100%; /* Кнопки растягиваются по ширине */
-        text-align: center;
-    }
-
-    .center-container {
-        flex-direction: column; /* Вертикальная ориентация элементов */
-        align-items: center;
-    }
 }
