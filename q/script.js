@@ -4,7 +4,7 @@
 // label Заголовок модатьного окна
 const blocks = [
     {
-        name: "банк_внесни",
+        name: "банк внесни",
         text: `{# Код для внесения денег в банк #}
 {% set money = member.getAttribute('money') %}
 {% require arguments.get(1) returning 'Использование: !положить <кол-во>' %}
