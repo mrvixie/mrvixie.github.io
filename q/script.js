@@ -48,11 +48,11 @@ blocks.forEach(block => {
     div.innerHTML = `
         ${block.label}
         <br><button class="copy-button">Копировать</button>
-        <button class="view-button">Просмотреть</button>
+        
     `;
     container.appendChild(div);
 });
-
+//<button class="view-button">Просмотреть</button>
 document.querySelectorAll('.copy-button').forEach(button => {
     button.addEventListener('click', function() {
         const block = button.parentElement;
