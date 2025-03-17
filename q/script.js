@@ -87,7 +87,7 @@ document.querySelectorAll('.view-button').forEach(button => {
             const newTab = window.open('', '_blank');
 
             if (newTab) {
-                // Оформляем содержимое новой страницы
+                // Оформляем содержимое новой страницы #f4f4f4
                 const pageTemplate = `
                     <!DOCTYPE html>
                     <html lang="ru">
@@ -102,7 +102,7 @@ document.querySelectorAll('.view-button').forEach(button => {
                                 line-height: 1.6;
                             }
                             pre {
-                                background: #f4f4f4;
+                                background: #000000;
                                 padding: 15px;
                                 border: 1px solid #ccc;
                                 overflow-x: auto;
