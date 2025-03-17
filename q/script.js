@@ -102,7 +102,7 @@ document.querySelectorAll('.view-button').forEach(button => {
                                 line-height: 1.6;
                             }
                             pre {
-                                background: #000000;
+                                background: #f4f4f4;
                                 padding: 15px;
                                 border: 1px solid #ccc;
                                 overflow-x: auto;
