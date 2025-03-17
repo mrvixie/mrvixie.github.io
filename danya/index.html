@@ -1,33 +1,26 @@
-// Загружаем данные из JSON и добавляем их в таблицу
-fetch("data.json")
-    .then(response => response.json())
-    .then(data => populateTable(data))
-    .catch(error => console.error("Ошибка загрузки JSON:", error));
-
-// Добавление строк в таблицу
-function populateTable(data) {
-    const tableBody = document.getElementById("codeTable").querySelector("tbody");
-    data.forEach((item, index) => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td>${item.title}</td>
-            <td>${item.description}</td>
-            <td>
-                <a href="${item.code}" target="_blank" class="link-btn">Перейти</a>
-            </td>
-        `;
-        tableBody.appendChild(row);
-    });
-}
-
-// Фильтрация строк таблицы по поисковому запросу
-document.getElementById("searchInput").addEventListener("input", function () {
-    const query = this.value.toLowerCase();
-    const rows = document.querySelectorAll("#codeTable tbody tr");
-
-    rows.forEach(row => {
-        const cells = row.querySelectorAll("td");
-        const matches = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(query));
-        row.style.display = matches ? "" : "none";
-    });
-});
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коды из видео</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Коды из видео</h1>
+    <input type="text" id="searchInput" placeholder="Введите текст для поиска...">
+    <table id="codeTable">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Описание</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Строки добавляются динамически -->
+        </tbody>
+    </table>
+    <script src="script.js" defer></script>
+</body>
+</html>
