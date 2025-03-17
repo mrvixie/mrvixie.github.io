@@ -1,3 +1,16 @@
+.block.hidden {
+    display: none;
+}
+.block {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 5px 0;
+}
+.link-button {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
 .block {
     margin: 10px;
     padding: 10px;
