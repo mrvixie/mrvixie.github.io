@@ -4,6 +4,7 @@
 // label Заголовок модатьного окна
 const blocks = [
     {
+        name: "банк_внесни",
         text: `{# Код для внесения денег в банк #}
 {% set money = member.getAttribute('money') %}
 {% require arguments.get(1) returning 'Использование: !положить <кол-во>' %}
@@ -41,6 +42,7 @@ blocks.forEach(block => {
     const div = document.createElement('div');
     div.className = 'block';
     div.setAttribute('data-text', block.text);
+    div.setAttribute('data-name', block.name);
     div.setAttribute('data-extra', block.extra);
     div.innerHTML = `
         ${block.label}
@@ -54,12 +56,12 @@ document.querySelectorAll('.copy-button').forEach(button => {
     button.addEventListener('click', function() {
         const block = button.parentElement;
         const text = block.getAttribute('data-text');
-
+        const name = block.getAttribute('data-name')
         // Создание текстового файла
         const blob = new Blob([text], { type: 'text/plain' });
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
-        link.download = 'copied_text.txt';
+        link.download = `${name}.txt`;
 
         // Запуск скачивания
         link.click();
