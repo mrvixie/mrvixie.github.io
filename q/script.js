@@ -1,5 +1,5 @@
 // Подключение blocks.js
-import { blocks } from 'blocks.js';
+import { blocks } from './blocks.js';
 
 // Ваш существующий код
 const container = document.getElementById('container');
