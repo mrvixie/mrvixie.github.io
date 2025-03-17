@@ -34,7 +34,26 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     border: 1px solid #ccc;
+
+    /* Ограничения по ширине и высоте */
+    max-width: 90%; /* Максимальная ширина для адаптации */
+    max-height: 80vh; /* Ограничение по высоте */
+    
+    /* Включение прокрутки, если текст слишком большой */
+    overflow-y: auto; 
+    overflow-x: hidden; /* Убираем горизонтальный скролл */
+
+    /* Отступы внутри модального окна */
+    box-sizing: border-box;
 }
+
+/* Дополнительные стили для текста */
+.modal p {
+    margin: 10px 0;
+    line-height: 1.5;
+    word-wrap: break-word; /* Перенос длинных слов */
+}
+
 
 .modal.active {
     display: block;
