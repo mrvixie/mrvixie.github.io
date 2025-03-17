@@ -1,3 +1,7 @@
+// Блоки добавлять тут
+// text: код JB
+// extra: Типо теги поиска по ним можно найти данный блок
+// label Заголовок модатьного окна
 const blocks = [
     {
         text: `{# Код для внесения денег в банк #}
@@ -40,7 +44,7 @@ blocks.forEach(block => {
     div.setAttribute('data-extra', block.extra);
     div.innerHTML = `
         ${block.label}
-        <button class="copy-button">Копировать</button>
+        <br><button class="copy-button">Копировать</button>
         <button class="view-button">Просмотреть</button>
     `;
     container.appendChild(div);
