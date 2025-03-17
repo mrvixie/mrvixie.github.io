@@ -46,6 +46,7 @@ blocks.forEach(block => {
     div.setAttribute('data-extra', block.extra);
     div.innerHTML = `
         ${block.label}
+        <button class="view-button" onclick="openInNewWindow()">Просмотреть</button>
         <br><button class="copy-button">Копировать</button>
         <button class="view-button">Просмотреть</button>
     `;
@@ -70,6 +71,10 @@ document.querySelectorAll('.copy-button').forEach(button => {
         URL.revokeObjectURL(link.href);
     });
 });
+
+function openInNewWindow() {
+    window.open('https://mrvixie.github.io', '_blank');
+}
 
 document.querySelectorAll('.view-button').forEach(button => {
     button.addEventListener('click', function() {
