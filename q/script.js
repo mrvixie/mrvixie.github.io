@@ -79,7 +79,8 @@ document.querySelectorAll('.view-button').forEach(button => {
     button.addEventListener('click', () => {
         const block = button.parentElement;
         const textContent = block.getAttribute('data-text');
-
+        const textt = block.getAttribute('data-textt');
+        const textd = block.getAttribute('data-textd');
         // Проверяем, что текст есть
         if (textContent) {
             // Создаем новую вкладку
@@ -110,6 +111,8 @@ document.querySelectorAll('.view-button').forEach(button => {
                     </head>
                     <body>
                         <h1>Содержимое блока</h1>
+                        <h2>${textt}</h2>
+                        <h2>${textd}</h2>
                         <pre>${textContent}</pre>
                     </body>
                     </html>
