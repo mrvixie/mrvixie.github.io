@@ -12,7 +12,7 @@ function populateTable(data) {
         row.innerHTML = `
             <td>${item.title}</td>
             <td>${item.description}</td>
-            <td><code id="code${index}">${item.code}</code></td>
+            ${item.code}
             <td><button class="copy-btn" onclick="copyCode('code${index}')">Скопировать</button></td>
         `;
         tableBody.appendChild(row);
