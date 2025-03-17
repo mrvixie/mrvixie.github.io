@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма для перехода</title>
+    <style>
+        .form-container {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 10px auto;
+            width: 300px;
+            background-color: #f9f9f9;
+        }
+        .submit-button {
+            margin-top: 10px;
+            cursor: pointer;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form id="dataForm">
+            <label for="textt">Заголовок:</label>
+            <input type="text" id="textt" name="textt" required>
+            <br>
+            <label for="textd">Подзаголовок:</label>
+            <input type="text" id="textd" name="textd" required>
+            <br>
+            <label for="content">Содержимое:</label>
+            <textarea id="content" name="content" rows="4" required></textarea>
+            <br>
+            <button type="button" class="submit-button" onclick="openNewPage()">Открыть</button>
+        </form>
+    </div>
+<script>
+    function openNewPage() {
+        const form = document.getElementById('dataForm');
+        const textt = form.querySelector('[name="textt"]').value;
+        const textd = form.querySelector('[name="textd"]').value;
+        const content = form.querySelector('[name="content"]').value;
+
+        if (content) {
+            const newTab = window.open('', '_blank');
+
+            if (newTab) {
+                const objectData = {
+                    text: textt,
+                    extra: textd,
+                    label: content
+                };
+
+                const pageTemplate = `
+                    <!DOCTYPE html>
+                    <html lang="ru">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Содержимое формы</title>
+                        <style>
+                            body {
+                                font-family: Arial, sans-serif;
+                                margin: 20px;
+                                line-height: 1.6;
+                            }
+                            pre {
+                                background: #f4f4f4;
+                                padding: 15px;
+                                border: 1px solid #ccc;
+                                overflow-x: auto;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <h1>Содержимое формы</h1>
+                        <h4>Объект данных:</h4>
+                        <pre>${JSON.stringify(objectData, null, 4)}</pre>
+                        <p>Вы можете скопировать эти данные для использования.</p>
+                    </body>
+                    </html>
+                `;
+                newTab.document.write(pageTemplate);
+                newTab.document.close();
+            } else {
+                alert('Браузер заблокировал открытие новой вкладки.');
+            }
+        } else {
+            alert('Все поля должны быть заполнены.');
+        }
+    }
+</script>
+
