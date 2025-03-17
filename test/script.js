@@ -4,7 +4,7 @@ fetch("data.json")
     .then(data => populateTable(data))
     .catch(error => console.error("Ошибка загрузки JSON:", error));
 
-// Добавление строк в таблицу
+// Добавление строк в таблицу ${item.code}
 function populateTable(data) {
     const tableBody = document.getElementById("codeTable").querySelector("tbody");
     data.forEach((item, index) => {
@@ -12,7 +12,7 @@ function populateTable(data) {
         row.innerHTML = `
             <td>${item.title}</td>
             <td>${item.description}</td>
-            ${item.code}
+            
             <td><button class="copy-btn" onclick="copyCode('code${index}')">Скопировать</button></td>
         `;
         tableBody.appendChild(row);
