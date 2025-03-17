@@ -1,11 +1,8 @@
-// Блоки добавлять тут
-// text: код JB
-// extra: Типо теги поиска по ним можно найти данный блок
-// label Заголовок модатьного окна
+// Добавление новых элементах
 const blocks = [
     {
-        name: "банкㅤㅤㅤㅤㅤㅤㅤ ‏ внести",
-        text: `{# Код для внесения денег в банк #}
+        name: 'bank_vn',
+        code: `{# Код для внесения денег в банк #}
 {% set money = member.getAttribute('money') %}
 {% require arguments.get(1) returning 'Использование: !положить <кол-во>' %}
 {% require number(arguments.get(1)) returning 'Это не число' %}
@@ -41,13 +38,12 @@ const container = document.getElementById('container');
 blocks.forEach(block => {
     const div = document.createElement('div');
     div.className = 'block';
-    div.setAttribute('data-text', block.text);
-    div.setAttribute('data-name', block.name);
+    div.setAttribute('data-text', block.code);
     div.setAttribute('data-extra', block.extra);
+    div.setAttribute('data-title', block.name);
     div.innerHTML = `
         ${block.label}
-        <button class="view-button" onclick="openInNewWindow()">Просмотреть</button>
-        <br><button class="copy-button">Копировать</button>
+        <button class="copy-button">Копировать</button>
         <button class="view-button">Просмотреть</button>
     `;
     container.appendChild(div);
@@ -57,12 +53,12 @@ document.querySelectorAll('.copy-button').forEach(button => {
     button.addEventListener('click', function() {
         const block = button.parentElement;
         const text = block.getAttribute('data-text');
-        const name = block.getAttribute('data-name')
+        const title = block.getAttribute('data-title');
         // Создание текстового файла
         const blob = new Blob([text], { type: 'text/plain' });
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
-        link.download = `${name}.txt`;
+        link.download = `code_jb_${title}_.txt`;
 
         // Запуск скачивания
         link.click();
@@ -71,10 +67,6 @@ document.querySelectorAll('.copy-button').forEach(button => {
         URL.revokeObjectURL(link.href);
     });
 });
-
-function openInNewWindow() {
-    window.open('https://mrvixie.github.io', '_blank');
-}
 
 document.querySelectorAll('.view-button').forEach(button => {
     button.addEventListener('click', function() {
