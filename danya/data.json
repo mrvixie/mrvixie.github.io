@@ -1,0 +1,12 @@
+[
+    {
+        "title": "!положить - положить монеты в банк",
+        "description": "Скрипт для перевода монет в банк",
+        "code": "https://example.com/deposit-script"
+    },
+    {
+        "title": "!снять - снять монеты из банка",
+        "description": "Скрипт для снятия монет из банка",
+        "code": "https://example.com/withdraw-script"
+    }
+]
