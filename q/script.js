@@ -47,7 +47,7 @@ blocks.forEach(block => {
     div.setAttribute('data-title', block.name);
     div.innerHTML = `
         ${block.label}
-        <button class="copy-button">Копировать</button>
+        <br><button class="copy-button">Копировать</button>
         <button class="view-button">Просмотреть</button>
     `;
     container.appendChild(div);
