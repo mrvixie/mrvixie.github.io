@@ -2,7 +2,7 @@
 const items = [
     {
         category: "Устройство на работу",
-        url: "https://example.com/job",
+        url: ["https://example.com/job", "https://example.com/application"],
         keywords: "устройство работа шахтёр проверка вакансии",
         codes: [
             {
@@ -41,7 +41,7 @@ const items = [
     },
     {
         category: "Работа и увольнение",
-        url: "https://example.com/work-termination",
+        url: ["https://example.com/work-termination", "https://example.com/application1"],
         keywords: "работа завершение увольнение шахтёр",
         codes: [
             {
