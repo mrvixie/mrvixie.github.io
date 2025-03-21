@@ -1,7 +1,7 @@
 const items = [
     {
         category: "Устройство на работу",
-        urls: ["https://example.com/job", "https://example.com/application"],
+        urls: ["https://youtu.be/7m0abqEykFQ?feature=shared", "https://www.youtube.com/watch?v=7m0abqEykFQ"],
         keywords: "устройство работа шахтёр проверка вакансии",
         codes: [
             {
