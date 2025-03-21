@@ -1,0 +1,84 @@
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            margin: 0;
+            padding: 0;
+            color: #444;
+        }
+        .email-container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        .header {
+            background-color: #6a11cb;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .content {
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .recovery-code {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2575fc;
+            background: #f0f4ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px auto;
+            display: inline-block;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: #2575fc;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(37, 117, 252, 0.4);
+            transition: background 0.3s, transform 0.2s;
+        }
+        .button:hover {
+            background: #6a11cb;
+            transform: translateY(-2px);
+        }
+        .footer {
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 15px;
+            font-size: 13px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            Восстановление вашего аккаунта
+        </div>
+        <div class="content">
+            <p>Здравствуйте! Ваш уникальный код восстановления представлен ниже.</p>
+            <div class="recovery-code">
+                1234-5678-9101 <!-- Замените на динамическую переменную -->
+            </div>
+            <p>Пожалуйста, введите этот код на странице восстановления, чтобы восстановить доступ к вашему аккаунту.</p>
+            <a href="https://example.com/recover" class="button">Перейти к восстановлению</a>
+        </div>
+        <div class="footer">
+            <p>&copy; 2025 AuthMe. Все права защищены. Если вы не запрашивали восстановление, пожалуйста, проигнорируйте это сообщение.</p>
+        </div>
+    </div>
+</body>
+</html>
