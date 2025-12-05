@@ -1,5 +1,5 @@
 // ==================== КОНФИГУРАЦИЯ ====================
-const API_BASE_URL = 'http://217.154.212.188:9366'; // Твой API сервер 217.154.212.188
+const API_BASE_URL = 'https://api.mr-vixie.su'; // Твой API сервер 217.154.212.188
 
 // ==================== API МЕНЕДЖЕР ====================
 class APIManager {
@@ -1018,4 +1018,5 @@ window.checkAdminPassword = checkAdminPassword;
 window.showAdminTab = showAdminTab;
 window.resetPostForm = resetPostForm;
 window.deletePost = deletePost;
+
 window.editPost = editPost;
