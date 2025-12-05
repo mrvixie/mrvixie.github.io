@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="VIX.ico" type="image/x-icon">
+    <title>DVX Studio</title>
+    
+    <!-- Подключаем CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Victor+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="frame">
+        <!-- ХЕДЕР -->
+        <div class="header">
+            <div class="header-logo" onclick="showSection('home')">
+                <div class="header-logo--img">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100" height="100" rx="20" fill="#dc2626"/>
+                        <path d="M30 35L50 20L70 35L50 50L30 35Z" fill="white"/>
+                        <path d="M30 65L50 80L70 65" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                        <path d="M30 50L50 65L70 50" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="header-logo--text">
+                    <a>DVX</a>
+                </div>
+            </div>
+
+            <div class="header-nav">
+                <div class="header-nav--element active" onclick="showSection('home')">
+                    <div class="header-nav--element-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.77778 10.2222V18C5.77778 19.1046 6.67321 20 7.77778 20H12M5.77778 10.2222L11.2929 4.70711C11.6834 4.31658 12.3166 4.31658 12.7071 4.70711L17.5 9.5M5.77778 10.2222L4 12M18.2222 10.2222V18C18.2222 19.1046 17.3268 20 16.2222 20H12M18.2222 10.2222L20 12M18.2222 10.2222L17.5 9.5M17.5 9.5V6M12 20V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="header-nav--element-text">
+                        <a>Главная</a>
+                    </div>
+                </div>
+
+                <div class="header-nav--element" onclick="showSection('juniper')">
+                    <div class="header-nav--element-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 8V16M8 12H16M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="header-nav--element-text">
+                        <a>Juniper</a>
+                    </div>
+                </div>
+
+                <div class="header-nav--element" onclick="showSection('windows')">
+                    <div class="header-nav--element-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 8L12 4L20 8L12 12L4 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M4 12L12 16L20 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M4 16L12 20L20 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="header-nav--element-text">
+                        <a>Софты</a>
+                    </div>
+                </div>
+
+                <div class="header-nav--element" onclick="showSection('partners')">
+                    <div class="header-nav--element-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 19V18C3 15.7909 4.79086 14 7 14H11C13.2091 14 15 15.7909 15 18V19M15 11C16.6569 11 18 9.65685 18 8C18 6.34315 16.6569 5 15 5M21 19V18C21 15.7909 19.2091 14 17 14H16.5M12 8C12 9.65685 10.6569 11 9 11C7.34315 11 6 9.65685 6 8C6 6.34315 7.34315 5 9 5C10.6569 5 12 6.34315 12 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="header-nav--element-text">
+                        <a>Партнёры</a>
+                    </div>
+                </div>
+
+                <div class="header-nav--element" onclick="showSection('design')">
+                    <div class="header-nav--element-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M4 16L8.29289 11.7071C8.68342 11.3166 9.31658 11.3166 9.70711 11.7071L13 15M13 15L15.7929 12.2071C16.1834 11.8166 16.8166 11.8166 17.2071 12.2071L20 15M13 15L15.25 17.25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="header-nav--element-text">
+                        <a>Дизайн</a>
+                    </div>
+                </div>
+
+                <div class="header-nav--element" onclick="showSection('orders')">
+                    <div class="header-nav--element-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 9C5 7.89543 5.89543 7 7 7H17C18.1046 7 19 7.89543 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M15 7V6C15 4.34315 13.6569 3 12 3V3C10.3431 3 9 4.34315 9 6V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 11L9 12C9 13.6569 10.3431 15 12 15V15C13.6569 15 15 13.6569 15 12L15 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="header-nav--element-text">
+                        <a>Заказы</a>
+                    </div>
+                </div>
+
+                <div class="header-nav--element" onclick="showSection('portfolio')">
+                    <div class="header-nav--element-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 17V7C3 5.89543 3.89543 5 5 5H9.58579C9.851 5 10.1054 5.10536 10.2929 5.29289L12 7H19C20.1046 7 21 7.89543 21 9V17C21 18.1046 20.1046 19 19 19H5C3.89543 19 3 18.1046 3 17Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="header-nav--element-text">
+                        <a>Портфолио</a>
+                    </div>
+                </div>
+
+                <div class="header-nav--element" id="admin-nav-button" onclick="toggleAdminPanel()" style="display: none;">
+                    <div class="header-nav--element-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M19.4 15C19.2662 15.3044 19.1334 15.6098 19.0015 15.9161C18.5833 16.9061 18.1681 17.8979 17.7558 18.8915C17.5637 19.346 17.0361 19.5 16.5 19.5C13.5 19.5 10.5 19.5 7.5 19.5C6.96391 19.5 6.43626 19.346 6.24415 18.8915C5.56608 17.3405 4.88893 15.7895 4.21179 14.2385C4.07895 13.9323 3.9461 13.626 3.81326 13.3198C3.61264 12.857 3.75 12.5 4.5 12.5C5.25 12.5 5.99264 12.4799 6.73529 12.4598C7.12418 12.4498 7.51306 12.4398 7.90194 12.4298C8.07176 12.425 8.25 12.5 8.25 12.6802C8.25 13.3198 8.25 13.9595 8.25 14.5991C8.25 15.2396 8.78947 15.5 9.5 15.5C11.5 15.5 13.5 15.5 15.5 15.5C16.2105 15.5 16.75 15.2396 16.75 14.5991C16.75 13.6103 16.75 12.6215 16.75 11.6327C16.75 11.2781 16.4524 11 16.0978 11C15.4608 11 14.8239 11 14.1869 11C13.8313 11 13.75 10.7219 13.75 10.3673C13.75 9.37621 13.75 8.38513 13.75 7.39405C13.75 6.75525 13.2105 6.5 12.5 6.5C10.5 6.5 8.5 6.5 6.5 6.5C5.78947 6.5 5.25 6.75525 5.25 7.39405C5.25 8.38313 5.25 9.37221 5.25 10.3613C5.25 10.7159 4.95237 11 4.59783 11C3.96082 11 3.32381 11 2.68679 11C2.33226 11 2.25 10.7219 2.25 10.3673C2.25 9.37821 2.25 8.38913 2.25 7.40005C2.25 6.76025 2.78947 6.5 3.5 6.5C6.5 6.5 9.5 6.5 12.5 6.5C13.2105 6.5 13.75 6.76025 13.75 7.40005C13.75 8.38821 13.75 9.37637 13.75 10.3645C13.75 10.7191 14.0476 11 14.4022 11C15.0392 11 15.6762 11 16.3132 11C16.6677 11 17 10.7219 17 10.3673C17 9.37821 17 8.38913 17 7.40005C17 6.76025 17.5395 6.5 18.25 6.5C21.25 6.5 24.25 6.5 27.25 6.5C27.9605 6.5 28.5 6.75525 28.5 7.40005C28.5 8.38913 28.5 9.37821 28.5 10.3673C28.5 10.7219 28.2024 11 27.8478 11C27.2108 11 26.5738 11 25.9368 11C25.5823 11 25.5 11.2781 25.5 11.6327C25.5 12.6215 25.5 13.6103 25.5 14.5991C25.5 15.2396 25.0395 15.5 24.25 15.5C22.25 15.5 20.25 15.5 18.25 15.5C17.4605 15.5 17 15.2396 17 14.5991C17 13.9595 17 13.3198 17 12.6802C17 12.5 17.1782 12.425 17.3481 12.4298C17.7369 12.4398 18.1258 12.4498 18.5147 12.4598C19.2574 12.4799 20 12.5 20.75 12.5C21.5 12.5 21.6374 12.857 21.4367 13.3198C21.3039 13.626 21.1711 13.9323 21.0382 14.2385C20.3611 15.7895 19.6839 17.3405 19.0058 18.8915C18.8137 19.346 18.2861 19.5 17.75 19.5C16.25 19.5 14.75 19.5 13.25 19.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="header-nav--element-text">
+                        <a>Админ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="view">
+            <!-- ЛЕВОЕ МЕНЮ -->
+            <div class="leftmenu">
+                <div class="leftmenu-container">
+                    <div class="leftmenu-categories">
+                        <div class="leftmenu-categories--title">
+                            <a>Категории</a>
+                        </div>
+
+                        <div class="leftmenu-categories--elements-list">
+                            <div class="leftmenu-categories--element active" onclick="showSection('portfolio')">
+                                <div class="leftmenu-categories--element-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3 17V7C3 5.89543 3.89543 5 5 5H9.58579C9.851 5 10.1054 5.10536 10.2929 5.29289L12 7H19C20.1046 7 21 7.89543 21 9V17C21 18.1046 20.1046 19 19 19H5C3.89543 19 3 18.1046 3 17Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="leftmenu-categories--element-text">
+                                    <a>ПОРТФОЛИО</a>
+                                </div>
+                            </div>
+
+                            <div class="leftmenu-categories--element" onclick="showSection('orders')">
+                                <div class="leftmenu-categories--element-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5 9C5 7.89543 5.89543 7 7 7H17C18.1046 7 19 7.89543 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M15 7V6C15 4.34315 13.6569 3 12 3V3C10.3431 3 9 4.34315 9 6V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="leftmenu-categories--element-text">
+                                    <a>ЗАКАЗЫ</a>
+                                </div>
+                            </div>
+
+                            <div class="leftmenu-categories--element" onclick="showSection('design')">
+                                <div class="leftmenu-categories--element-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M4 16L8.29289 11.7071C8.68342 11.3166 9.31658 11.3166 9.70711 11.7071L13 15M13 15L15.7929 12.2071C16.1834 11.8166 16.8166 11.8166 17.2071 12.2071L20 15M13 15L15.25 17.25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="leftmenu-categories--element-text">
+                                    <a>ДИЗАЙН</a>
+                                </div>
+                            </div>
+
+                            <div class="leftmenu-categories--element" onclick="showSection('windows')">
+                                <div class="leftmenu-categories--element-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="4" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M12 16V20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M8 20H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="leftmenu-categories--element-text">
+                                    <a>ДЛЯ WINDOWS</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="leftmenu-contacts">
+                        <div class="leftmenu-contacts--elements-list">
+                            <div class="leftmenu-contacts--element">
+                                <div class="leftmenu-contacts--element-icon">
+                                    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515a.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0a12.64 12.64 0 00-.617-1.25a.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057a19.9 19.9 0 005.993 3.03a.078.078 0 00.084-.028c.462-.63.872-1.295 1.226-1.994a.076.076 0 00-.041-.106a13.107 13.107 0 01-1.872-.892a.077.077 0 01-.008-.128c.125-.094.25-.188.372-.284a.076.076 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.076.076 0 01.078.01c.12.096.245.19.372.284a.077.077 0 01-.006.128a12.3 12.3 0 01-1.873.892a.077.077 0 00-.041.107c.355.698.765 1.363 1.226 1.993a.076.076 0 00.084.028a19.839 19.839 0 006.002-3.03a.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
+                                    </svg>
+                                </div>
+                                <div class="leftmenu-contacts--element-text">
+                                    <a>Discord</a>
+                                </div>
+                            </div>
+
+                            <div class="leftmenu-contacts--element">
+                                <div class="leftmenu-contacts--element-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M12 16V12M12 8H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                                <div class="leftmenu-contacts--element-text">
+                                    <a>Помощь</a>
+                                </div>
+                            </div>
+
+                            <div class="leftmenu-contacts--element">
+                                <div class="leftmenu-contacts--element-icon">
+                                    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                    </svg>
+                                </div>
+                                <div class="leftmenu-contacts--element-text">
+                                    <a>YouTube</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ОСНОВНОЙ КОНТЕНТ -->
+            <div class="main">
+                <div class="content">
+                    <!-- ГЛАВНАЯ СТРАНИЦА -->
+                    <div id="home" class="section active">
+                        <div class="slider1">
+                            <svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="800" height="300" fill="#1a1a1a"/>
+                                <text x="400" y="140" text-anchor="middle" fill="#dc2626" font-family="Unbounded" font-size="48" font-weight="bold">DVX STUDIO</text>
+                                <text x="400" y="190" text-anchor="middle" fill="#e5e5e5" font-family="Onest" font-size="20">Креативные решения для ваших проектов</text>
+                                <circle cx="200" cy="150" r="40" fill="#dc2626" opacity="0.2"/>
+                                <circle cx="600" cy="150" r="40" fill="#dc2626" opacity="0.2"/>
+                            </svg>
+                        </div>
+
+                        <div class="infohello1">
+                            <div class="devdesign">
+                                <div class="devdesign-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                                        <path d="M480 576L192 576C139 576 96 533 96 480L96 160C96 107 139 64 192 64L496 64C522.5 64 544 85.5 544 112L544 400C544 420.9 530.6 438.7 512 445.3L512 512C529.7 512 544 526.3 544 544C544 561.7 529.7 576 512 576L480 576zM192 448C174.3 448 160 462.3 160 480C160 497.7 174.3 512 192 512L448 512L448 448L192 448zM224 216C224 229.3 234.7 240 248 240L424 240C437.3 240 448 229.3 448 216C448 202.7 437.3 192 424 192L248 192C234.7 192 224 202.7 224 216zM248 288C234.7 288 224 298.7 224 312C224 325.3 234.7 336 248 336L424 336C437.3 336 448 325.3 448 312C448 298.7 437.3 288 424 288L248 288z"/>
+                                    </svg>
+                                </div>
+                                <div class="devdesign-text">
+                                    about.md
+                                </div>
+                                <span class="devdesign-line"></span>
+                            </div>
+                            <div class="infohello1--title">
+                                <a>ВСТРЕЧАЙТЕ VIXIE</a>
+                            </div>
+                            <div class="infohello1--lore">
+                                <a>Привет! Меня зовут VIXIE, мне 19 лет, и я увлекаюсь дизайном, созданием ботов и сайтов. Ранее я занимался программированием в Juniper Bot, а сейчас планирую делать видеоролики-гайды по Juniper на моем YouTube канале ZoLiryzik. В данный момент я работаю над несколькими проектами, и вы можете увидеть превью их дизайна чуть выше.</a>
+                            </div>
+                        </div>
+
+                        <div class="projects">
+                            <div class="devdesign">
+                                <div class="devdesign-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                                        <path d="M296.5 69.2C311.4 62.3 328.6 62.3 343.5 69.2L562.1 170.2C570.6 174.1 576 182.6 576 192C576 201.4 570.6 209.9 562.1 213.8L343.5 314.8C328.6 321.7 311.4 321.7 296.5 314.8L77.9 213.8C69.4 209.8 64 201.3 64 192C64 182.7 69.4 174.1 77.9 170.2L296.5 69.2zM112.1 282.4L276.4 358.3C304.1 371.1 336 371.1 363.7 358.3L528 282.4L562.1 298.2C570.6 302.1 576 310.6 576 320C576 329.4 570.6 337.9 562.1 341.8L343.5 442.8C328.6 449.7 311.4 449.7 296.5 442.8L77.9 341.8C69.4 337.8 64 329.3 64 320C64 310.7 69.4 302.1 77.9 298.2L112 282.4zM77.9 426.2L112 410.4L276.3 486.3C304 499.1 335.9 499.1 363.6 486.3L527.9 410.4L562 426.2C570.5 430.1 575.9 438.6 575.9 448C575.9 457.4 570.5 465.9 562 469.8L343.4 570.8C328.5 577.7 311.3 577.7 296.4 570.8L77.9 469.8C69.4 465.8 64 457.3 64 448C64 438.7 69.4 430.1 77.9 426.2z"/>
+                                    </svg>
+                                </div>
+                                <div class="devdesign-text">
+                                    projects.md
+                                </div>
+                                <span class="devdesign-line"></span>
+                            </div>
+                            <div class="infohello1--title">
+                                <a>МОИ ПРОЕКТЫ</a>
+                            </div>
+                            
+                            <div class="projects--list">
+                                <div class="projects--list-element">
+                                    <div class="projects--list-element-info">
+                                        <div class="projects--list-element-title">
+                                            <a>ZoLiryzik</a>
+                                        </div>
+                                        <div class="projects--list-element-lore">
+                                            <a>Пришёл я на сервер никем, стал другом ZoLiryzik.</a>
+                                        </div>
+                                        <div class="projects--list-element-link" onclick="showSection('portfolio')">
+                                            <div class="projects--list-element-link-text">
+                                                <a>Смотреть работу</a>
+                                            </div>
+                                            <div class="projects--list-element-link-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M10.1429 7H7C5.89543 7 5 7.89543 5 9V17C5 18.1046 5.89543 19 7 19H15C16.1046 19 17 18.1046 17 17V13.2143M19 5H15M19 5V9M19 5L9 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="projects--list-element-bgimg">
+                                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="100" cy="100" r="80" fill="#dc2626" opacity="0.1"/>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <div class="projects--list-element">
+                                    <div class="projects--list-element-info">
+                                        <div class="projects--list-element-title">
+                                            <a>Fatory</a>
+                                        </div>
+                                        <div class="projects--list-element-lore">
+                                            <a>Сервер, которому я иногда помогаю, но не всегда получается.</a>
+                                        </div>
+                                        <div class="projects--list-element-link" onclick="showSection('portfolio')">
+                                            <div class="projects--list-element-link-text">
+                                                <a>Смотреть работу</a>
+                                            </div>
+                                            <div class="projects--list-element-link-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M10.1429 7H7C5.89543 7 5 7.89543 5 9V17C5 18.1046 5.89543 19 7 19H15C16.1046 19 17 18.1046 17 17V13.2143M19 5H15M19 5V9M19 5L9 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="projects--list-element-bgimg">
+                                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="100" cy="100" r="80" fill="#dc2626" opacity="0.1"/>
+                                            <rect x="50" y="50" width="100" height="100" fill="#dc2626" opacity="0.05"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center mt-4">
+                                <button class="card-button" onclick="showSection('portfolio')">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; margin-right: 8px;">
+                                        <path d="M4 8L12 4L20 8L12 12L4 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M4 12L12 16L20 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M4 16L12 20L20 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    Смотреть все работы
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ПОРТФОЛИО -->
+                    <div id="portfolio" class="section">
+                        <div class="devdesign">
+                            <div class="devdesign-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 17V7C3 5.89543 3.89543 5 5 5H9.58579C9.851 5 10.1054 5.10536 10.2929 5.29289L12 7H19C20.1046 7 21 7.89543 21 9V17C21 18.1046 20.1046 19 19 19H5C3.89543 19 3 18.1046 3 17Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="devdesign-text">
+                                portfolio.json
+                            </div>
+                            <span class="devdesign-line"></span>
+                        </div>
+                        <div class="infohello1--title">
+                            <a>МОЁ ПОРТФОЛИО</a>
+                        </div>
+                        <div class="infohello1--lore mb-4">
+                            <a>Здесь собраны мои лучшие работы за последние годы.</a>
+                        </div>
+                        
+                        <div class="card-grid" id="portfolio-grid">
+                            <!-- Загружается через JS -->
+                        </div>
+                    </div>
+
+                    <!-- ЗАКАЗЫ -->
+                    <div id="orders" class="section">
+                        <div class="devdesign">
+                            <div class="devdesign-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 9C5 7.89543 5.89543 7 7 7H17C18.1046 7 19 7.89543 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15 7V6C15 4.34315 13.6569 3 12 3V3C10.3431 3 9 4.34315 9 6V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="devdesign-text">
+                                orders.db
+                            </div>
+                            <span class="devdesign-line"></span>
+                        </div>
+                        <div class="infohello1--title">
+                            <a>СИСТЕМА ЗАКАЗОВ</a>
+                        </div>
+                        <div class="infohello1--lore mb-4">
+                            <a>Хотите заказать у меня услугу? Выберите тип заказа, опишите ваши требования и отправьте заявку.</a>
+                        </div>
+                        
+                        <div class="card-grid">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h3 class="card-title">Веб-дизайн</h3>
+                                    <p class="card-description">Создание уникального дизайна для вашего сайта или приложения.</p>
+                                    <div class="card-meta">
+                                        <span class="card-date">от 5,000 ₽</span>
+                                        <button class="card-button" onclick="openOrderModal('Веб-дизайн')">
+                                            Заказать
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-content">
+                                    <h3 class="card-title">Разработка бота</h3>
+                                    <p class="card-description">Создание Discord/Telegram ботов с любым функционалом.</p>
+                                    <div class="card-meta">
+                                        <span class="card-date">от 3,000 ₽</span>
+                                        <button class="card-button" onclick="openOrderModal('Разработка бота')">
+                                            Заказать
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-content">
+                                    <h3 class="card-title">UI/UX Дизайн</h3>
+                                    <p class="card-description">Проектирование пользовательских интерфейсов.</p>
+                                    <div class="card-meta">
+                                        <span class="card-date">от 7,000 ₽</span>
+                                        <button class="card-button" onclick="openOrderModal('UI/UX Дизайн')">
+                                            Заказать
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-content">
+                                    <h3 class="card-title">Консультация</h3>
+                                    <p class="card-description">Помощь в решении технических вопросов.</p>
+                                    <div class="card-meta">
+                                        <span class="card-date">от 1,500 ₽/час</span>
+                                        <button class="card-button" onclick="openOrderModal('Консультация')">
+                                            Заказать
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ДИЗАЙН -->
+                    <div id="design" class="section">
+                        <div class="devdesign">
+                            <div class="devdesign-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4 16L8.29289 11.7071C8.68342 11.3166 9.31658 11.3166 9.70711 11.7071L13 15M13 15L15.7929 12.2071C16.1834 11.8166 16.8166 11.8166 17.2071 12.2071L20 15M13 15L15.25 17.25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="devdesign-text">
+                                design.psd
+                            </div>
+                            <span class="devdesign-line"></span>
+                        </div>
+                        <div class="infohello1--title">
+                            <a>МОИ ДИЗАЙНЫ</a>
+                        </div>
+                        <div class="infohello1--lore mb-4">
+                            <a>Коллекция моих лучших дизайнерских работ.</a>
+                        </div>
+                        
+                        <div class="card-grid" id="design-grid">
+                            <!-- Загружается через JS -->
+                        </div>
+                    </div>
+
+                    <!-- ДЛЯ WINDOWS -->
+                    <div id="windows" class="section windows-section">
+                        <div class="devdesign">
+                            <div class="devdesign-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="4" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 16V20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8 20H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="devdesign-text">
+                                software.exe
+                            </div>
+                            <span class="devdesign-line"></span>
+                        </div>
+                        <div class="infohello1--title">
+                            <a>СОФТ ДЛЯ WINDOWS</a>
+                        </div>
+                        <div class="infohello1--lore mb-4">
+                            <a>Мои разработки для операционной системы Windows.</a>
+                        </div>
+                        
+                        <div class="card-grid" id="windows-grid">
+                            <!-- Загружается через JS -->
+                        </div>
+                    </div>
+
+                    <!-- JUNIPER -->
+                    <div id="juniper" class="section juniper-section">
+                        <div class="devdesign">
+                            <div class="devdesign-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 8V16M8 12H16M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="devdesign-text">
+                                juniper-tutorials.js
+                            </div>
+                            <span class="devdesign-line"></span>
+                        </div>
+                        <div class="infohello1--title">
+                            <a>JUNIPER TUTORIALS</a>
+                        </div>
+                        <div class="infohello1--lore mb-4">
+                            <a>Обучающие материалы и руководства по работе с Juniper Bot.</a>
+                        </div>
+                        
+                        <div class="card-grid" id="juniper-grid">
+                            <!-- Загружается через JS -->
+                        </div>
+                    </div>
+
+                    <!-- ПАРТНЁРЫ -->
+                    <div id="partners" class="section">
+                        <div class="devdesign">
+                            <div class="devdesign-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 19V18C3 15.7909 4.79086 14 7 14H11C13.2091 14 15 15.7909 15 18V19M15 11C16.6569 11 18 9.65685 18 8C18 6.34315 16.6569 5 15 5M21 19V18C21 15.7909 19.2091 14 17 14H16.5M12 8C12 9.65685 10.6569 11 9 11C7.34315 11 6 9.65685 6 8C6 6.34315 7.34315 5 9 5C10.6569 5 12 6.34315 12 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="devdesign-text">
+                                partners.json
+                            </div>
+                            <span class="devdesign-line"></span>
+                        </div>
+                        <div class="infohello1--title">
+                            <a>НАШИ ПАРТНЁРЫ</a>
+                        </div>
+                        <div class="infohello1--lore mb-4">
+                            <a>Проекты и сервера, с которыми я сотрудничаю.</a>
+                        </div>
+                        
+                        <div class="card-grid" id="partners-grid">
+                            <!-- Загружается через JS -->
+                        </div>
+                    </div>
+
+                    <!-- АДМИН ПАНЕЛЬ -->
+                    <div id="admin-panel" class="admin-panel">
+                        <div class="devdesign">
+                            <div class="devdesign-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M19.4 15C19.2662 15.3044 19.1334 15.6098 19.0015 15.9161C18.5833 16.9061 18.1681 17.8979 17.7558 18.8915C17.5637 19.346 17.0361 19.5 16.5 19.5C13.5 19.5 10.5 19.5 7.5 19.5C6.96391 19.5 6.43626 19.346 6.24415 18.8915C5.56608 17.3405 4.88893 15.7895 4.21179 14.2385C4.07895 13.9323 3.9461 13.626 3.81326 13.3198C3.61264 12.857 3.75 12.5 4.5 12.5C5.25 12.5 5.99264 12.4799 6.73529 12.4598C7.12418 12.4498 7.51306 12.4398 7.90194 12.4298C8.07176 12.425 8.25 12.5 8.25 12.6802C8.25 13.3198 8.25 13.9595 8.25 14.5991C8.25 15.2396 8.78947 15.5 9.5 15.5C11.5 15.5 13.5 15.5 15.5 15.5C16.2105 15.5 16.75 15.2396 16.75 14.5991C16.75 13.6103 16.75 12.6215 16.75 11.6327C16.75 11.2781 16.4524 11 16.0978 11C15.4608 11 14.8239 11 14.1869 11C13.8313 11 13.75 10.7219 13.75 10.3673C13.75 9.37621 13.75 8.38513 13.75 7.39405C13.75 6.75525 13.2105 6.5 12.5 6.5C10.5 6.5 8.5 6.5 6.5 6.5C5.78947 6.5 5.25 6.75525 5.25 7.39405C5.25 8.38313 5.25 9.37221 5.25 10.3613C5.25 10.7159 4.95237 11 4.59783 11C3.96082 11 3.32381 11 2.68679 11C2.33226 11 2.25 10.7219 2.25 10.3673C2.25 9.37821 2.25 8.38913 2.25 7.40005C2.25 6.76025 2.78947 6.5 3.5 6.5C6.5 6.5 9.5 6.5 12.5 6.5C13.2105 6.5 13.75 6.76025 13.75 7.40005C13.75 8.38821 13.75 9.37637 13.75 10.3645C13.75 10.7191 14.0476 11 14.4022 11C15.0392 11 15.6762 11 16.3132 11C16.6677 11 17 10.7219 17 10.3673C17 9.37821 17 8.38913 17 7.40005C17 6.76025 17.5395 6.5 18.25 6.5C21.25 6.5 24.25 6.5 27.25 6.5C27.9605 6.5 28.5 6.75525 28.5 7.40005C28.5 8.38913 28.5 9.37821 28.5 10.3673C28.5 10.7219 28.2024 11 27.8478 11C27.2108 11 26.5738 11 25.9368 11C25.5823 11 25.5 11.2781 25.5 11.6327C25.5 12.6215 25.5 13.6103 25.5 14.5991C25.5 15.2396 25.0395 15.5 24.25 15.5C22.25 15.5 20.25 15.5 18.25 15.5C17.4605 15.5 17 15.2396 17 14.5991C17 13.9595 17 13.3198 17 12.6802C17 12.5 17.1782 12.425 17.3481 12.4298C17.7369 12.4398 18.1258 12.4498 18.5147 12.4598C19.2574 12.4799 20 12.5 20.75 12.5C21.5 12.5 21.6374 12.857 21.4367 13.3198C21.3039 13.626 21.1711 13.9323 21.0382 14.2385C20.3611 15.7895 19.6839 17.3405 19.0058 18.8915C18.8137 19.346 18.2861 19.5 17.75 19.5C16.25 19.5 14.75 19.5 13.25 19.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="devdesign-text">
+                                admin-panel.js
+                            </div>
+                            <span class="devdesign-line"></span>
+                        </div>
+                        
+                        <div class="infohello1--title">
+                            <a>ПАНЕЛЬ УПРАВЛЕНИЯ</a>
+                        </div>
+                        
+                        <div class="admin-tabs">
+                            <button class="admin-tab active" onclick="showAdminTab('posts')">Посты</button>
+                            <button class="admin-tab" onclick="showAdminTab('add-post')">Добавить пост</button>
+                            <button class="admin-tab" onclick="showAdminTab('orders')">Заказы</button>
+                            <button class="admin-tab" onclick="showAdminTab('settings')">Настройки</button>
+                        </div>
+                        
+                        <div id="admin-content">
+                            <!-- Контент админ-панели будет загружен через JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ФУТЕР -->
+        <div class="footer">
+            <div class="footer-container">
+                <div class="footer-container-r">
+                    <!-- Блок 1: DVX и Социальные сети -->
+                    <div class="footer-block1">
+                        <!-- DVX -->
+                        <div class="footer-block1-logo">
+                            <div class="footer-block1-logo--img">
+                                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="100" height="100" rx="20" fill="#dc2626"/>
+                                    <path d="M30 35L50 20L70 35L50 50L30 35Z" fill="white"/>
+                                    <path d="M30 65L50 80L70 65" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                                    <path d="M30 50L50 65L70 50" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <div class="footer-block1-logo--text">
+                                <a>DVX</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Социальные сети -->
+                        <div class="footer-social-section">
+                            <div class="footer-social-title">
+                                <a>Социальные сети</a>
+                            </div>
+                            <div class="footer-social-icons">
+                                <a href="#" onclick="event.preventDefault(); alert('Discord: vixie#0001')">
+                                    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515a.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0a12.64 12.64 0 00-.617-1.25a.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057a19.9 19.9 0 005.993 3.03a.078.078 0 00.084-.028c.462-.63.872-1.295 1.226-1.994a.076.076 0 00-.041-.106a13.107 13.107 0 01-1.872-.892a.077.077 0 01-.008-.128c.125-.094.25-.188.372-.284a.076.076 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.076.076 0 01.078.01c.12.096.245.19.372.284a.077.077 0 01-.006.128a12.3 12.3 0 01-1.873.892a.077.077 0 00-.041.107c.355.698.765 1.363 1.226 1.993a.076.076 0 00.084.028a19.839 19.839 0 006.002-3.03a.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" onclick="event.preventDefault(); alert('Telegram: @vixie_dev')">
+                                    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-12S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" onclick="event.preventDefault(); alert('YouTube: @ZoLiryzik')">
+                                    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Блок 2: Компания -->
+                    <div class="footer-block2">
+                        <div class="footer-company-title">
+                            <a>Компания</a>
+                        </div>
+                        <div class="footer-company-links">
+                            <a href="#" onclick="showSection('portfolio'); return false;">О нас</a>
+                            <a href="#" onclick="showSection('partners'); return false;">Партнёры</a>
+                            <a href="#" onclick="showSection('portfolio'); return false;">Портфолио</a>
+                            <a href="#" onclick="showSection('home'); return false;">Главная</a>
+                        </div>
+                    </div>
+
+                    <!-- Блок 3: Портфолио -->
+                    <div class="footer-block3">
+                        <div class="footer-portfolio-title">
+                            <a>Портфолио</a>
+                        </div>
+                        <div class="footer-portfolio-links">
+                            <a href="#" onclick="showSection('design'); return false;">Дизайн</a>
+                            <a href="#" onclick="showSection('windows'); return false;">Софт</a>
+                            <a href="#" onclick="showSection('orders'); return false;">Заказы</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Копирайт -->
+                <div class="footer-copyright">
+                    <div class="footer-copyright-text">
+                        <a>© 2025 · DVX Studio</a>
+                    </div>
+                    <div class="footer-docs">
+                        <ul class="footer-docs-links">
+                            <li><a href="#">Terms of Use</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ДЛЯ ЗАКАЗОВ -->
+    <div id="order-modal" class="hidden" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 2000;">
+        <div style="background: var(--bg-card); padding: 2rem; border-radius: 12px; max-width: 500px; width: 90%; max-height: 90vh; overflow-y: auto;">
+            <h3 style="font-family: 'Unbounded', sans-serif; margin-bottom: 1.5rem; color: var(--text-light);">Оформление заказа</h3>
+            <form id="order-form">
+                <div class="form-group">
+                    <label class="form-label">Тип услуги</label>
+                    <input type="text" class="form-input" id="order-service" readonly style="background: var(--bg-dark);">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Ваше имя</label>
+                    <input type="text" class="form-input" id="order-name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Контакты (Discord/Telegram)</label>
+                    <input type="text" class="form-input" id="order-contact" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Описание задачи</label>
+                    <textarea class="form-textarea" id="order-description" required></textarea>
+                </div>
+                <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 2rem;">
+                    <button type="button" class="card-button" style="background: var(--text-gray);" onclick="closeOrderModal()">Отмена</button>
+                    <button type="submit" class="card-button">Отправить заявку</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ВХОДА В АДМИНКУ -->
+    <div id="admin-login-modal" class="admin-login-modal">
+        <div class="admin-login-content">
+            <h2 class="admin-login-title">DVX ADMIN PANEL</h2>
+            <p class="admin-login-subtitle">Введите 39-значный пароль для доступа</p>
+            
+            <div class="password-input-container">
+                <input type="password" 
+                       class="admin-password-input" 
+                       id="admin-password"
+                       placeholder="••••••••••••••••••••••••••••••••••••"
+                       maxlength="39"
+                       autocomplete="off">
+                
+                <button class="paste-button" id="paste-button" onclick="pasteFromClipboard()">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 9H15C13.8954 9 13 9.89543 13 11V20C13 21.1046 13.8954 22 15 22H20C21.1046 22 22 21.1046 22 20V11C22 9.89543 21.1046 9 20 9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9 15H4C2.89543 15 2 15.8954 2 17V20C2 21.1046 2.89543 22 4 22H9C10.1046 22 11 21.1046 11 20V17C11 15.8954 10.1046 15 9 15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M13 9V5C13 3.89543 12.1046 3 11 3H9C7.89543 3 7 3.89543 7 5V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7 13H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Вставить
+                </button>
+            </div>
+            
+            <div class="password-length-indicator" id="password-length">
+                <span id="password-count">0</span>/39 символов
+            </div>
+            
+            <button class="admin-login-button" onclick="checkAdminPassword()">
+                Войти в админ-панель
+            </button>
+            
+            <div class="admin-login-error" id="admin-login-error">
+                Неверный пароль. Попробуйте снова.
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Подключаем JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
