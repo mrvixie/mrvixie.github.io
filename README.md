@@ -92,8 +92,8 @@
 ### 🛠️ **Services**
 | Service | Description | Price |
 |---------|-------------|-------|
-| Bot Development | Discord/Telegram bots | from 3,000 ₽ |
-| Design | Various types of infographics | from 7,000 ₽ |
+| Bot Development | Discord/Telegram bots | from $38 |
+| Design | Various types of infographics | from $90 ₽ |
 
 ### 📚 **Useful materials**
 - 🎓 **Juniper Tutorials** - Bot setup guides
