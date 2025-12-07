@@ -748,84 +748,6 @@
             color: var(--text-light);
         }
 
-        /* ===== ВИРТУАЛЬНЫЙ ДЖОЙСТИК ДЛЯ ТЕЛЕФОНА ===== */
-        .virtual-joystick {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            width: 150px;
-            height: 150px;
-            display: none;
-            z-index: 1001;
-        }
-
-        .joystick-base {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(34, 34, 34, 0.7);
-            border-radius: 50%;
-            border: 2px solid var(--border-color);
-            backdrop-filter: blur(10px);
-        }
-
-        .joystick-handle {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            background: var(--primary-red);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            cursor: pointer;
-            touch-action: none;
-            border: 2px solid var(--primary-red-dark);
-            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.3);
-        }
-
-        .direction-buttons {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            display: none;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(3, 1fr);
-            gap: 5px;
-            width: 150px;
-            height: 150px;
-            z-index: 1001;
-        }
-
-        .dir-btn {
-            background: rgba(34, 34, 34, 0.7);
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            touch-action: none;
-            backdrop-filter: blur(10px);
-            user-select: none;
-        }
-
-        .dir-btn:active {
-            background: var(--primary-red);
-            border-color: var(--primary-red);
-        }
-
-        .dir-btn svg {
-            width: 24px;
-            height: 24px;
-            stroke: var(--text-light);
-        }
-
-        .dir-up { grid-column: 2; grid-row: 1; }
-        .dir-left { grid-column: 1; grid-row: 2; }
-        .dir-right { grid-column: 3; grid-row: 2; }
-        .dir-down { grid-column: 2; grid-row: 3; }
-
         /* ===== АНИМАЦИЯ ПОЯВЛЕНИЯ КНОПКИ ИГРЫ ===== */
         @keyframes buttonTransform {
             0% {
@@ -1085,16 +1007,6 @@
                 height: 95vmin;
             }
             
-            .virtual-joystick {
-                display: block;
-                width: 120px;
-                height: 120px;
-            }
-            
-            .direction-buttons {
-                display: grid;
-            }
-            
             .game-ui {
                 width: 95vmin;
                 flex-direction: column;
@@ -1126,18 +1038,6 @@
                 width: 100%;
                 max-width: 300px;
                 justify-content: center;
-            }
-            
-            .virtual-joystick {
-                width: 100px;
-                height: 100px;
-                bottom: 10px;
-                left: 10px;
-            }
-            
-            .joystick-handle {
-                width: 50px;
-                height: 50px;
             }
             
             .direction-buttons {
@@ -1287,35 +1187,7 @@
             </div>
         </div>
         
-        <!-- Виртуальный джойстик для мобильных -->
-        <div class="virtual-joystick" id="virtual-joystick">
-            <div class="joystick-base"></div>
-            <div class="joystick-handle" id="joystick-handle"></div>
-        </div>
         
-        <!-- Кнопки направления для мобильных -->
-        <div class="direction-buttons" id="direction-buttons">
-            <div class="dir-btn dir-up" id="up-btn">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-            <div class="dir-btn dir-left" id="left-btn">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-            <div class="dir-btn dir-right" id="right-btn">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-            <div class="dir-btn dir-down" id="down-btn">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 5v14M19 12l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-        </div>
         
         <div class="controls-hint" id="mobile-hint">
             Касайтесь экрана для управления • Стрелки также работают
@@ -1337,8 +1209,6 @@
         let isPaused = false;
         let gameRunning = false;
         let isMobile = false;
-        let joystickActive = false;
-        let joystickDirection = { x: 0, y: 0 };
         let touchStartX, touchStartY;
 
         // ===== ИНИЦИАЛИЗАЦИЯ ИГРЫ =====
@@ -1355,14 +1225,10 @@
             
             // Показываем соответствующие элементы управления
             if (isMobile) {
-                document.getElementById('virtual-joystick').style.display = 'block';
-                document.getElementById('direction-buttons').style.display = 'grid';
                 document.getElementById('desktop-hint').style.display = 'none';
                 document.getElementById('mobile-hint').style.display = 'block';
                 initTouchControls();
             } else {
-                document.getElementById('virtual-joystick').style.display = 'none';
-                document.getElementById('direction-buttons').style.display = 'none';
                 document.getElementById('desktop-hint').style.display = 'block';
                 document.getElementById('mobile-hint').style.display = 'none';
             }
