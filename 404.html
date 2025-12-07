@@ -1714,8 +1714,6 @@
 
         // ===== ТАЧ УПРАВЛЕНИЕ ДЛЯ МОБИЛЬНЫХ =====
         function initTouchControls() {
-            const joystickHandle = document.getElementById('joystick-handle');
-            const joystickBase = document.querySelector('.joystick-base');
             const baseRect = joystickBase.getBoundingClientRect();
             const baseCenterX = baseRect.left + baseRect.width / 2;
             const baseCenterY = baseRect.top + baseRect.height / 2;
@@ -1725,96 +1723,7 @@
             joystickHandle.addEventListener('touchstart', handleTouchStart);
             document.addEventListener('touchmove', handleTouchMove);
             document.addEventListener('touchend', handleTouchEnd);
-            
-            // Обработка кнопок направления
-            document.getElementById('up-btn').addEventListener('touchstart', () => setTouchDirection('up'));
-            document.getElementById('down-btn').addEventListener('touchstart', () => setTouchDirection('down'));
-            document.getElementById('left-btn').addEventListener('touchstart', () => setTouchDirection('left'));
-            document.getElementById('right-btn').addEventListener('touchstart', () => setTouchDirection('right'));
-            
-            document.getElementById('up-btn').addEventListener('touchend', clearTouchDirection);
-            document.getElementById('down-btn').addEventListener('touchend', clearTouchDirection);
-            document.getElementById('left-btn').addEventListener('touchend', clearTouchDirection);
-            document.getElementById('right-btn').addEventListener('touchend', clearTouchDirection);
 
-            function handleTouchStart(e) {
-                e.preventDefault();
-                joystickActive = true;
-                touchStartX = e.touches[0].clientX;
-                touchStartY = e.touches[0].clientY;
-            }
-
-            function handleTouchMove(e) {
-                if (!joystickActive) return;
-                e.preventDefault();
-                
-                const touchX = e.touches[0].clientX;
-                const touchY = e.touches[0].clientY;
-                
-                // Вычисляем смещение относительно центра джойстика
-                const deltaX = touchX - baseCenterX;
-                const deltaY = touchY - baseCenterY;
-                
-                // Ограничиваем расстояние
-                const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-                const limitedDistance = Math.min(distance, maxDistance);
-                
-                // Вычисляем нормализованный вектор направления
-                const angle = Math.atan2(deltaY, deltaX);
-                joystickDirection.x = Math.cos(angle) * (limitedDistance / maxDistance);
-                joystickDirection.y = Math.sin(angle) * (limitedDistance / maxDistance);
-                
-                // Позиционируем ручку джойстика
-                joystickHandle.style.transform = `translate(calc(-50% + ${joystickDirection.x * maxDistance}px), calc(-50% + ${joystickDirection.y * maxDistance}px))`;
-                
-                // Определяем направление на основе угла
-                const degrees = angle * (180 / Math.PI);
-                
-                if (joystickDirection.x !== 0 || joystickDirection.y !== 0) {
-                    if (Math.abs(joystickDirection.x) > Math.abs(joystickDirection.y)) {
-                        // Горизонтальное движение
-                        if (joystickDirection.x > 0 && direction !== 'left') {
-                            nextDirection = 'right';
-                        } else if (joystickDirection.x < 0 && direction !== 'right') {
-                            nextDirection = 'left';
-                        }
-                    } else {
-                        // Вертикальное движение
-                        if (joystickDirection.y > 0 && direction !== 'up') {
-                            nextDirection = 'down';
-                        } else if (joystickDirection.y < 0 && direction !== 'down') {
-                            nextDirection = 'up';
-                        }
-                    }
-                }
-            }
-
-            function handleTouchEnd(e) {
-                joystickActive = false;
-                joystickDirection = { x: 0, y: 0 };
-                joystickHandle.style.transform = 'translate(-50%, -50%)';
-            }
-
-            function setTouchDirection(dir) {
-                switch(dir) {
-                    case 'up':
-                        if (direction !== 'down') nextDirection = 'up';
-                        break;
-                    case 'down':
-                        if (direction !== 'up') nextDirection = 'down';
-                        break;
-                    case 'left':
-                        if (direction !== 'right') nextDirection = 'left';
-                        break;
-                    case 'right':
-                        if (direction !== 'left') nextDirection = 'right';
-                        break;
-                }
-            }
-
-            function clearTouchDirection() {
-                // Не очищаем направление - оставляем последнее выбранное
-            }
             
             // Также добавляем свайпы для управления
             let touchStart = null;
