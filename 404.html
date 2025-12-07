@@ -1740,28 +1740,10 @@
 
         // ===== ТАЧ УПРАВЛЕНИЕ ДЛЯ МОБИЛЬНЫХ =====
         function initTouchControls() {
-            const joystickHandle = document.getElementById('joystick-handle');
-            const joystickBase = document.querySelector('.joystick-base');
             const baseRect = joystickBase.getBoundingClientRect();
             const baseCenterX = baseRect.left + baseRect.width / 2;
             const baseCenterY = baseRect.top + baseRect.height / 2;
             const maxDistance = baseRect.width / 3;
-
-            // Обработка касаний для джойстика
-            joystickHandle.addEventListener('touchstart', handleTouchStart);
-            document.addEventListener('touchmove', handleTouchMove);
-            document.addEventListener('touchend', handleTouchEnd);
-            
-            // Обработка кнопок направления
-            document.getElementById('up-btn').addEventListener('touchstart', () => setTouchDirection('up'));
-            document.getElementById('down-btn').addEventListener('touchstart', () => setTouchDirection('down'));
-            document.getElementById('left-btn').addEventListener('touchstart', () => setTouchDirection('left'));
-            document.getElementById('right-btn').addEventListener('touchstart', () => setTouchDirection('right'));
-            
-            document.getElementById('up-btn').addEventListener('touchend', clearTouchDirection);
-            document.getElementById('down-btn').addEventListener('touchend', clearTouchDirection);
-            document.getElementById('left-btn').addEventListener('touchend', clearTouchDirection);
-            document.getElementById('right-btn').addEventListener('touchend', clearTouchDirection);
 
             function handleTouchStart(e) {
                 e.preventDefault();
