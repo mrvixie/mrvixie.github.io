@@ -1711,25 +1711,35 @@
                 case 'ArrowUp':
                 case 'w':
                 case 'W':
+                case 'ц':
+                case 'Ц':
                     if (direction !== 'down') nextDirection = 'up';
                     break;
                 case 'ArrowDown':
                 case 's':
                 case 'S':
+                case 'ы':
+                case 'Ы':
                     if (direction !== 'up') nextDirection = 'down';
                     break;
                 case 'ArrowLeft':
                 case 'a':
                 case 'A':
+                case 'ф':
+                case 'Ф':
                     if (direction !== 'right') nextDirection = 'left';
                     break;
                 case 'ArrowRight':
                 case 'd':
                 case 'D':
+                case 'в':
+                case 'В':
                     if (direction !== 'left') nextDirection = 'right';
                     break;
                 case 'r':
                 case 'R':
+                case 'к':
+                case 'К':
                     restartGame();
                     break;
                 case 'Escape':
@@ -1740,10 +1750,28 @@
 
         // ===== ТАЧ УПРАВЛЕНИЕ ДЛЯ МОБИЛЬНЫХ =====
         function initTouchControls() {
+            const joystickHandle = document.getElementById('joystick-handle');
+            const joystickBase = document.querySelector('.joystick-base');
             const baseRect = joystickBase.getBoundingClientRect();
             const baseCenterX = baseRect.left + baseRect.width / 2;
             const baseCenterY = baseRect.top + baseRect.height / 2;
             const maxDistance = baseRect.width / 3;
+
+            // Обработка касаний для джойстика
+            joystickHandle.addEventListener('touchstart', handleTouchStart);
+            document.addEventListener('touchmove', handleTouchMove);
+            document.addEventListener('touchend', handleTouchEnd);
+            
+            // Обработка кнопок направления
+            document.getElementById('up-btn').addEventListener('touchstart', () => setTouchDirection('up'));
+            document.getElementById('down-btn').addEventListener('touchstart', () => setTouchDirection('down'));
+            document.getElementById('left-btn').addEventListener('touchstart', () => setTouchDirection('left'));
+            document.getElementById('right-btn').addEventListener('touchstart', () => setTouchDirection('right'));
+            
+            document.getElementById('up-btn').addEventListener('touchend', clearTouchDirection);
+            document.getElementById('down-btn').addEventListener('touchend', clearTouchDirection);
+            document.getElementById('left-btn').addEventListener('touchend', clearTouchDirection);
+            document.getElementById('right-btn').addEventListener('touchend', clearTouchDirection);
 
             function handleTouchStart(e) {
                 e.preventDefault();
@@ -2162,13 +2190,6 @@
             // Инициализация игры (но не запускаем сразу)
             resetGame();
         }
-
-        // ===== УБИРАЕМ СТАРЫЙ setInterval И ДОБАВЛЯЕМ РАЗРЕШЕНИЕ АНИМАЦИИ =====
-        // В конце initGame удалите:
-        // if (!gameRunning) {
-        //     gameRunning = true;
-        //     gameInterval = setInterval(gameLoop, gameSpeed);
-        // }
 
         // Вместо этого добавьте после initGame():
         requestAnimationFrame(gameLoop);
