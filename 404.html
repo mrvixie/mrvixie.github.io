@@ -748,6 +748,48 @@
             color: var(--text-light);
         }
 
+        .direction-buttons {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 5px;
+            width: 150px;
+            height: 150px;
+            z-index: 1001;
+        }
+
+        .dir-btn {
+            background: rgba(34, 34, 34, 0.7);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            touch-action: none;
+            backdrop-filter: blur(10px);
+            user-select: none;
+        }
+
+        .dir-btn:active {
+            background: var(--primary-red);
+            border-color: var(--primary-red);
+        }
+
+        .dir-btn svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--text-light);
+        }
+
+        .dir-up { grid-column: 2; grid-row: 1; }
+        .dir-left { grid-column: 1; grid-row: 2; }
+        .dir-right { grid-column: 3; grid-row: 2; }
+        .dir-down { grid-column: 2; grid-row: 3; }
+
         /* ===== АНИМАЦИЯ ПОЯВЛЕНИЯ КНОПКИ ИГРЫ ===== */
         @keyframes buttonTransform {
             0% {
@@ -1711,35 +1753,25 @@
                 case 'ArrowUp':
                 case 'w':
                 case 'W':
-                case 'ц':
-                case 'Ц':
                     if (direction !== 'down') nextDirection = 'up';
                     break;
                 case 'ArrowDown':
                 case 's':
                 case 'S':
-                case 'ы':
-                case 'Ы':
                     if (direction !== 'up') nextDirection = 'down';
                     break;
                 case 'ArrowLeft':
                 case 'a':
                 case 'A':
-                case 'ф':
-                case 'Ф':
                     if (direction !== 'right') nextDirection = 'left';
                     break;
                 case 'ArrowRight':
                 case 'd':
                 case 'D':
-                case 'в':
-                case 'В':
                     if (direction !== 'left') nextDirection = 'right';
                     break;
                 case 'r':
                 case 'R':
-                case 'к':
-                case 'К':
                     restartGame();
                     break;
                 case 'Escape':
@@ -2190,6 +2222,13 @@
             // Инициализация игры (но не запускаем сразу)
             resetGame();
         }
+
+        // ===== УБИРАЕМ СТАРЫЙ setInterval И ДОБАВЛЯЕМ РАЗРЕШЕНИЕ АНИМАЦИИ =====
+        // В конце initGame удалите:
+        // if (!gameRunning) {
+        //     gameRunning = true;
+        //     gameInterval = setInterval(gameLoop, gameSpeed);
+        // }
 
         // Вместо этого добавьте после initGame():
         requestAnimationFrame(gameLoop);
