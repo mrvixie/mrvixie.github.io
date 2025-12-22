@@ -1022,4 +1022,5 @@ window.deletePost = deletePost;
 window.editPost = editPost;
 
 
-console.log(this.token);
+
+
