@@ -6,7 +6,7 @@ class APIManager {
     constructor() {
         this.token = localStorage.getItem('admin_token') || null;
     }
-console.log(this.token);
+
     async request(endpoint, options = {}) {
         const url = API_BASE_URL + endpoint;
         const headers = {
@@ -1021,3 +1021,5 @@ window.deletePost = deletePost;
 
 window.editPost = editPost;
 
+
+console.log(this.token);
