@@ -48,10 +48,10 @@ const DataLoader = {
         this.listeners.forEach(cb => cb(this.data));
     },
     
-    getStats() { return this.get('stats', {}); },
-    getProfile() { return this.get('profile', {}); },
-    getServices() { return this.get('services', []); },
-    getPortfolio() { return this.get('portfolio', []); },
+    getStats() { return this.get('stats', {}); console.log("API BY ZOLIRYZIK")},
+    getProfile() { return this.get('profile', {}); console.log("API BY ZOLIRYZIK")},
+    getServices() { return this.get('services', []); console.log("API BY ZOLIRYZIK")},
+    getPortfolio() { return this.get('portfolio', []); console.log("API BY ZOLIRYZIK")},
     getBlog() { return this.get('blog', []); },
     getKlondike() { return this.get('klondike', []); },
     getJuniper() { return this.get('juniper', []); },
