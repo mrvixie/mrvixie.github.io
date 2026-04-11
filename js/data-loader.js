@@ -2,7 +2,6 @@ const DataLoader = {
     data: null,
     apiUrl: 'https://srv.zoliryzik.ru/api/content',
     refreshInterval: 300000,
-    lastLoad: 0,
     listeners: [],
     
     async load() {
@@ -10,7 +9,6 @@ const DataLoader = {
             const response = await fetch(this.apiUrl + '?t=' + Date.now());
             if (!response.ok) throw new Error('Failed to load data');
             this.data = await response.json();
-            this.lastLoad = Date.now();
             this.notify();
             return this.data;
         } catch (error) {
@@ -21,9 +19,7 @@ const DataLoader = {
     
     async autoRefresh() {
         await this.load();
-        setInterval(async () => {
-            await this.load();
-        }, this.refreshInterval);
+        setInterval(async () => { await this.load(); }, this.refreshInterval);
     },
     
     get(path, defaultValue = null) {
@@ -40,13 +36,8 @@ const DataLoader = {
         return value;
     },
     
-    onUpdate(callback) {
-        this.listeners.push(callback);
-    },
-    
-    notify() {
-        this.listeners.forEach(cb => cb(this.data));
-    },
+    onUpdate(callback) { this.listeners.push(callback); },
+    notify() { this.listeners.forEach(cb => cb(this.data)); },
     
     getStats() { return this.get('stats', {}); },
     getProfile() { return this.get('profile', {}); },
@@ -72,8 +63,7 @@ const DataLoader = {
     },
     
     formatDate(dateStr) {
-        const date = new Date(dateStr);
-        return date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+        return new Date(dateStr).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
     },
     
     formatPrice(price) {
