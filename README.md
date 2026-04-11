@@ -1,147 +1,59 @@
-# 🎨 DVX Studio
+# VIXIE Studio - Секретные данные
 
-**Креативные решения для ваших проектов**  
-*Дизайн · Разработка · Софты · Полезности · Juniper Bot*
+## Структура
 
----
+```
+assets/
+├── secrets.json    # Секретные данные (приватный репозиторий)
+└── config.js      # Загрузчик конфигурации
+```
 
-## ✨ Что здесь есть?
+## Настройка
 
-### 🎯 **Проекты и Портфолио**
-- 📁 **Мои лучшие работы** - Коллекция завершённых проектов
-- 🎨 **Дизайн-проекты** - UI/UX, графический дизайн, брендинг
-- 🤖 **Боты для Discord** - Автоматизация и модерация
-- 💻 **Софт для Windows** - Полезные программы и утилиты
+### 1. Создайте секретный репозиторий на GitHub
 
-### 🛠️ **Услуги**
-| Услуга | Описание | Стоимость |
-|--------|----------|-----------|
-| Разработка бота | Discord/Telegram боты | от 3,000 ₽ |
-| Дизайн | Разного вида инфографики | от 7,000 ₽ |
+Создайте приватный репозиторий (например `vixie-secrets`) и добавьте туда файл `secrets.json`:
 
-### 📚 **Полезные материалы**
-- 🎓 **Juniper Tutorials** - Гайды по настройке бота
-- 📹 **Видео-уроки** на YouTube канале
-- 💡 **Примеры кода** и шаблоны
+```json
+{
+    "admin_password": "ВАШ_РЕАЛЬНЫЙ_ПАРОЛЬ_39_СИМВОЛОВ_____ABC",
+    "api_endpoint": "https://ваш-api-сервер.com"
+}
+```
 
----
+### 2. Обновите config.js
 
-## 👨‍💻 Обо мне
+В файле `assets/config.js` замените:
+```javascript
+const baseRepo = 'https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/assets';
+```
 
-**Привет! Я VIXIE**  
-19 лет · Дизайнер · Разработчик (Junior)
+На ваши реальные данные:
+```javascript
+const baseRepo = 'https://raw.githubusercontent.com/vixie/vixie-secrets/main/assets';
+```
 
-- 🎨 Специализируюсь на дизайне
-- 🤖 Работал над командами **Juniper Bot** (Discord)
-- 📹 Ведём YouTube канал **ZoLiryzik** с обучающим контентом
-- 💼 Выполнил проекты для: ZoLiryzik, Fatory, On1x
-- 🚀 Постоянно изучаю новые технологии
+### 3. Загрузите секреты
 
----
+Загрузите `secrets.json` в приватный репозиторий и сделайте его публичным (или используйте Private Repository с правильными настройками).
 
-## 🔗 Связаться со мной
+### 4. Установите пароль
 
-### 💬 **Социальные сети:**
-- **Discord**: mr_vixie
+В файле `secrets.json` установите пароль для админ-панели (39 символов):
+```
+"admin_password": "abCdEfGh1234567890AbCdEfGh1234567890XyZ"
+```
 
-### 📞 **Быстрый заказ:**
-1. Перейдите в раздел **"Заказы"**
-2. Выберите нужную услугу
-3. Заполните простую форму
-4. Я свяжусь с вами в течение 24 часов!
+## Безопасность
 
----
+- `secrets.json` должен быть в приватном репозитории
+- URL в `config.js` можно обфусцировать через base64
+- Пароль в JSON зашифрован через XOR с динамическим ключом
 
-## 📍 Навигация по сайту
+## Альтернатива - GitHub Gist
 
-- 🏠 **Главная** - Общая информация и проекты
-- 📁 **Портфолио** - Мои работы
-- 🎨 **Дизайн** - Дизайнерские проекты
-- 🪟 **Софты** - Программы для Windows
-- 🤝 **Партнёры** - С кем сотрудничаю
-- 📝 **Заказы** - Оформить заказ
+Если не хотите создавать репозиторий, используйте GitHub Gist:
 
----
-
-## 📈 Статистика
-
-- 🎨 **50+** выполненных проектов
-- 🤖 **20+** созданных ботов
-- 👥 **100+** довольных клиентов
-- 🚀 **7 лет** в Discord
-
----
----
----
-
-# 🎨 DVX Studio
-
-**Creative solutions for your projects**  
-*Design · Development · Software · Resources · Juniper Bot*
-
----
-
-## ✨ What's here?
-
-### 🎯 **Projects and Portfolio**
-- 📁 **My best works** - Collection of completed projects
-- 🎨 **Design projects** - UI/UX, graphic design, branding
-- 🤖 **Discord bots** - Automation and moderation
-- 💻 **Windows software** - Useful programs and utilities
-
-### 🛠️ **Services**
-| Service | Description | Price |
-|---------|-------------|-------|
-| Bot Development | Discord/Telegram bots | from $38 |
-| Design | Various types of infographics | from $90 |
-
-### 📚 **Useful materials**
-- 🎓 **Juniper Tutorials** - Bot setup guides
-- 📹 **Video tutorials** on YouTube channel
-- 💡 **Code examples** and templates
-
----
-
-## 👨‍💻 About me
-
-**Hello! I'm VIXIE**  
-19 years old · Designer · Developer (Junior)
-
-- 🎨 Specialize in design
-- 🤖 Worked on **Juniper Bot** (Discord) commands
-- 📹 We run a YouTube channel **ZoLiryzik** with educational content
-- 💼 Completed projects for: ZoLiryzik, Fatory, On1x
-- 🚀 Constantly learning new technologies
-
----
-
-## 🔗 Contact me
-
-### 💬 **Social networks:**
-- **Discord**: mr_vixie
-
-### 📞 **Quick order:**
-1. Go to the **"Orders"** section
-2. Choose the service you need
-3. Fill out a simple form
-4. I'll contact you within 24 hours!
-
----
-
-## 📍 Site navigation
-
-- 🏠 **Home** - General information and projects
-- 📁 **Portfolio** - My works
-- 🎨 **Design** - Design projects
-- 🪟 **Software** - Windows programs
-- 🤝 **Partners** - Who I collaborate with
-- 📝 **Orders** - Place an order
-
----
-
-## 📈 Statistics
-
-- 🎨 **50+** completed projects
-- 🤖 **20+** created bots
-- 👥 **100+** satisfied clients
-- 🚀 **7 years** in Discord
+1. Создайте секретный Gist
+2. Получите его raw URL
+3. Обновите `config.js`

@@ -1,0 +1,303 @@
+.responsive-hide {
+    display: block;
+}
+
+.responsive-show {
+    display: none !important;
+}
+
+@media (max-width: 1400px) {
+    :root {
+        --sidebar-width: 280px;
+    }
+}
+
+@media (max-width: 1200px) {
+    :root {
+        --header-height: 70px;
+    }
+
+    .main-content {
+        margin-left: 0 !important;
+    }
+
+    .responsive-hide {
+        display: none !important;
+    }
+
+    .responsive-show {
+        display: block !important;
+    }
+
+    .mobile-sidebar-toggle {
+        display: flex !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .section-container {
+        padding: 0 1.5rem;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --header-height: 65px;
+    }
+
+    .section-container {
+        padding: 0 1rem;
+    }
+
+    .section-header {
+        margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .hero-section {
+        min-height: auto;
+        padding: calc(var(--header-height) + 3rem) 1rem 3rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-actions .btn {
+        width: auto;
+        max-width: 220px;
+    }
+
+    .hero-scroll-indicator {
+        display: none;
+    }
+
+    .card-grid,
+    .services-grid,
+    .portfolio-grid,
+    .juniper-grid,
+    .blog-list,
+    .blog-grid,
+    .blog-articles,
+    .klondike-grid,
+    .shop-grid,
+    .gallery-masonry,
+    .gallery-grid,
+    .testimonials-grid,
+    .features-grid,
+    .process-grid,
+    .clients-grid,
+    .faq-list,
+    .pricing-grid,
+    .commands-list,
+    .comments-list,
+    .stats-grid,
+    .social-links,
+    .timeline,
+    .related-posts,
+    .article-list {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem;
+    }
+
+    .portfolio-card,
+    .juniper-card,
+    .blog-card,
+    .klondike-card,
+    .shop-card,
+    .gallery-item,
+    .service-card,
+    .feature-card,
+    .pricing-card,
+    .testimonial-card,
+    .process-step,
+    .faq-item,
+    .command-item,
+    .comment,
+    .stat-card {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .portfolio-filters {
+        gap: 0.5rem;
+    }
+
+    .filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .modal-large {
+        max-width: calc(100% - 2rem);
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .contact-layout {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .section-badge {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+
+    .card-content,
+    .service-card {
+        padding: 1.25rem;
+    }
+
+    .btn {
+        padding: 0.85rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .logo-name {
+        font-size: 1.3rem;
+    }
+
+    .nav-item {
+        padding: 0.6rem 1rem;
+    }
+
+    .nav-item span {
+        font-size: 0.85rem;
+    }
+
+    .admin-tabs {
+        flex-wrap: wrap;
+    }
+
+    .admin-tab {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 1.75rem;
+    }
+
+    .badge-text {
+        font-size: 0.75rem;
+    }
+
+    .tech-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .tech-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg-primary: #0a0a0f;
+        --bg-secondary: #12121a;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+        --bg-primary: #f4f4f5;
+        --bg-secondary: #e4e4e7;
+    }
+}
+
+@media (hover: none) {
+    .card:hover {
+        transform: none;
+    }
+
+    .btn:hover {
+        transform: none;
+    }
+
+    .social-link:hover {
+        transform: none;
+    }
+
+    .tech-icon:hover {
+        transform: none;
+    }
+
+    .action-btn:hover {
+        transform: none;
+    }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+    .hero-section {
+        min-height: auto;
+        padding: calc(var(--header-height) + 1rem) 1rem 2rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-scroll-indicator {
+        display: none;
+    }
+}

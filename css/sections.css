@@ -1,0 +1,143 @@
+.page-section {
+    display: none;
+    min-height: 100vh;
+    padding-top: var(--header-height);
+    padding-bottom: 4rem;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.page-section.active {
+    display: block;
+    opacity: 1;
+}
+
+.section-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding-top: 2rem;
+}
+
+.section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(220, 38, 38, 0.1);
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    border-radius: var(--radius-full);
+    margin-bottom: 1.5rem;
+}
+
+.section-badge svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--primary);
+}
+
+.section-badge span {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+.juniper-badge {
+    background: rgba(249, 115, 22, 0.1);
+    border-color: rgba(249, 115, 22, 0.3);
+}
+
+.juniper-badge svg {
+    stroke: #f97316;
+}
+
+.juniper-badge span {
+    color: #f97316;
+}
+
+.admin-badge {
+    background: rgba(139, 92, 246, 0.1);
+    border-color: rgba(139, 92, 246, 0.3);
+}
+
+.admin-badge svg {
+    stroke: var(--secondary);
+}
+
+.admin-badge span {
+    color: var(--secondary);
+}
+
+.juniper-header .section-badge {
+    background: rgba(249, 115, 22, 0.1);
+    border-color: rgba(249, 115, 22, 0.3);
+}
+
+.juniper-header .section-badge svg {
+    stroke: #f97316;
+}
+
+.juniper-header .section-badge span {
+    color: #f97316;
+}
+
+.admin-header .section-badge {
+    background: rgba(139, 92, 246, 0.1);
+    border-color: rgba(139, 92, 246, 0.3);
+}
+
+.admin-header .section-badge svg {
+    stroke: var(--secondary);
+}
+
+.admin-header .section-badge span {
+    color: var(--secondary);
+}
+
+.juniper-section {
+    background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(249, 115, 22, 0.03) 50%, var(--bg-primary) 100%);
+}
+
+.admin-section {
+    background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(139, 92, 246, 0.03) 50%, var(--bg-primary) 100%);
+}

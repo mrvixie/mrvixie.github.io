@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - VIXIE</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --primary: #dc2626; --bg: #0a0a0f; --bg2: #1a1a2e; --text: #f8fafc; --muted: #94a3b8; --border: #334155; --success: #22c55e; --error: #ef4444; }
+    body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    
+    .screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+    .login-box { background: var(--bg2); padding: 40px; border-radius: 16px; width: 100%; max-width: 360px; border: 1px solid var(--border); }
+    .logo { width: 50px; height: 50px; background: var(--primary); border-radius: 10px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; }
+    h1 { text-align: center; margin-bottom: 24px; }
+    .form-group { margin-bottom: 16px; }
+    label { display: block; margin-bottom: 6px; color: var(--muted); font-size: 14px; }
+    input, textarea { width: 100%; padding: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 16px; }
+    input:focus, textarea:focus { outline: none; border-color: var(--primary); }
+    textarea { min-height: 300px; font-family: monospace; font-size: 14px; }
+    .btn { padding: 14px; background: var(--primary); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; }
+    .btn:hover { opacity: 0.9; }
+    .btn-sm { padding: 8px 16px; font-size: 14px; width: auto; }
+    .btn-danger { background: var(--error); }
+    .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+    
+    .admin { display: none; }
+    .header { background: var(--bg2); padding: 16px 24px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .logo-text { color: var(--primary); font-weight: bold; font-size: 18px; }
+    .nav { display: flex; gap: 8px; padding: 16px 24px; background: var(--bg2); border-bottom: 1px solid var(--border); overflow-x: auto; }
+    .nav-btn { padding: 10px 20px; background: transparent; border: none; border-radius: 8px; color: var(--muted); cursor: pointer; white-space: nowrap; }
+    .nav-btn.active { background: var(--primary); color: white; }
+    .content { padding: 24px; max-width: 1200px; margin: 0 auto; }
+    
+    .card { background: var(--bg2); border-radius: 12px; overflow: hidden; margin-bottom: 16px; }
+    .card-header { padding: 16px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .card-title { font-size: 18px; font-weight: 600; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: rgba(255,255,255,0.03); color: var(--muted); font-weight: 500; font-size: 14px; }
+    tr:hover { background: rgba(255,255,255,0.02); }
+    
+    .toast { position: fixed; bottom: 20px; right: 20px; padding: 14px 24px; border-radius: 8px; font-weight: 500; z-index: 1000; animation: slide 0.3s; }
+    .toast-success { background: var(--success); color: white; }
+    .toast-error { background: var(--error); color: white; }
+    @keyframes slide { from { transform: translateY(20px); opacity: 0; } to { transform: 0; opacity: 1; } }
+    .hidden { display: none; }
+    
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 100; }
+    .modal.hidden { display: none; }
+    .modal-box { background: var(--bg2); border-radius: 12px; width: 90%; max-width: 600px; max-height: 80vh; overflow: auto; }
+    .modal-header { padding: 16px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; }
+    .modal-body { padding: 16px; }
+    .modal-footer { padding: 16px; border-top: 1px solid var(--border); display: flex; gap: 8px; justify-content: flex-end; }
+  </style>
+</head>
+<body>
+  <!-- Login -->
+  <div class="screen" id="loginScreen">
+    <div class="login-box">
+      <div class="logo">V</div>
+      <h1>Admin</h1>
+      <form id="loginForm">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" id="username" value="admin" required>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="password" required placeholder="Введите пароль">
+        </div>
+        <button type="submit" class="btn">Войти</button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Admin -->
+  <div class="admin" id="adminScreen">
+    <header class="header">
+      <div class="logo-text">VIXIE Admin</div>
+      <button class="btn btn-outline btn-sm" id="logoutBtn">Выйти</button>
+    </header>
+    <nav class="nav">
+      <button class="nav-btn active" data-tab="content">Контент</button>
+      <button class="nav-btn" data-tab="services">Услуги</button>
+      <button class="nav-btn" data-tab="portfolio">Портфолио</button>
+      <button class="nav-btn" data-tab="blog">Блог</button>
+      <button class="nav-btn" data-tab="klondike">Клондайк</button>
+    </nav>
+    
+    <main class="content" id="mainContent">
+      <!-- Content Tab -->
+      <div class="tab-content" id="tab-content">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Редактировать контент (JSON)</span>
+            <button class="btn btn-sm" onclick="saveFullContent()">Сохранить</button>
+          </div>
+          <textarea id="contentEditor"></textarea>
+        </div>
+      </div>
+      
+      <!-- Services Tab -->
+      <div class="tab-content hidden" id="tab-services">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Услуги</span>
+            <button class="btn btn-sm" onclick="openModal('services')">+ Добавить</button>
+          </div>
+          <table>
+            <thead><tr><th>ID</th><th>Название</th><th>Цена</th><th>Популярное</th><th>Действия</th></tr></thead>
+            <tbody id="servicesTable"></tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Portfolio Tab -->
+      <div class="tab-content hidden" id="tab-portfolio">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Портфолио</span>
+            <button class="btn btn-sm" onclick="openModal('portfolio')">+ Добавить</button>
+          </div>
+          <table>
+            <thead><tr><th>ID</th><th>Название</th><th>Категория</th><th>Действия</th></tr></thead>
+            <tbody id="portfolioTable"></tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Blog Tab -->
+      <div class="tab-content hidden" id="tab-blog">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Блог</span>
+            <button class="btn btn-sm" onclick="openModal('blog')">+ Добавить</button>
+          </div>
+          <table>
+            <thead><tr><th>ID</th><th>Название</th><th>Категория</th><th>Действия</th></tr></thead>
+            <tbody id="blogTable"></tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Klondike Tab -->
+      <div class="tab-content hidden" id="tab-klondike">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Клондайк</span>
+            <button class="btn btn-sm" onclick="openModal('klondike')">+ Добавить</button>
+          </div>
+          <table>
+            <thead><tr><th>ID</th><th>Название</th><th>Тип</th><th>Действия</th></tr></thead>
+            <tbody id="klondikeTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <!-- Modal -->
+  <div class="modal hidden" id="editModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span class="card-title" id="modalTitle">Редактирование</span>
+        <button class="btn btn-outline btn-sm" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-footer">
+        <button class="btn btn-outline btn-sm" onclick="closeModal()">Отмена</button>
+        <button class="btn btn-sm" onclick="saveItem()">Сохранить</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API = 'https://srv.zoliryzik.ru/api';
+    let token = localStorage.getItem('admin_token');
+    let content = null;
+    let currentSection = null;
+    let currentItem = null;
+    
+    function toast(msg, type = 'success') {
+      const t = document.createElement('div');
+      t.className = 'toast toast-' + type;
+      t.textContent = msg;
+      document.body.appendChild(t);
+      setTimeout(() => t.remove(), 3000);
+    }
+    
+    async function api(endpoint, options = {}) {
+      const headers = { 'Content-Type': 'application/json' };
+      if (token) headers['Authorization'] = 'Bearer ' + token;
+      const res = await fetch(API + endpoint, { ...options, headers });
+      return res.json();
+    }
+    
+    async function loadContent() {
+      try {
+        content = await api('/content/all');
+        document.getElementById('contentEditor').value = JSON.stringify(content, null, 2);
+        renderTables();
+      } catch (e) {
+        toast('Ошибка загрузки', 'error');
+      }
+    }
+    
+    function renderTables() {
+      const s = content.services || [];
+      document.getElementById('servicesTable').innerHTML = s.map(i => 
+        '<tr><td>'+i.id+'</td><td>'+i.title+'</td><td>'+i.price+'</td><td>'+(i.popular?'✓':'-')+'</td><td><button class="btn btn-sm" onclick="editItem(\'services\','+i.id+')">Ред</button> <button class="btn btn-sm btn-danger" onclick="deleteItem(\'services\','+i.id+')">✕</button></td></tr>'
+      ).join('') || '<tr><td colspan="5">Нет данных</td></tr>';
+      
+      const p = content.portfolio || [];
+      document.getElementById('portfolioTable').innerHTML = p.map(i => 
+        '<tr><td>'+i.id+'</td><td>'+i.title+'</td><td>'+(i.category||'-')+'</td><td><button class="btn btn-sm" onclick="editItem(\'portfolio\','+i.id+')">Ред</button> <button class="btn btn-sm btn-danger" onclick="deleteItem(\'portfolio\','+i.id+')">✕</button></td></tr>'
+      ).join('') || '<tr><td colspan="4">Нет данных</td></tr>';
+      
+      const b = content.blog || [];
+      document.getElementById('blogTable').innerHTML = b.map(i => 
+        '<tr><td>'+i.id+'</td><td>'+i.title+'</td><td>'+(i.category||'-')+'</td><td><button class="btn btn-sm" onclick="editItem(\'blog\','+i.id+')">Ред</button> <button class="btn btn-sm btn-danger" onclick="deleteItem(\'blog\','+i.id+')">✕</button></td></tr>'
+      ).join('') || '<tr><td colspan="4">Нет данных</td></tr>';
+      
+      const k = content.klondike || [];
+      document.getElementById('klondikeTable').innerHTML = k.map(i => 
+        '<tr><td>'+i.id+'</td><td>'+i.title+'</td><td>'+(i.type||'-')+'</td><td><button class="btn btn-sm" onclick="editItem(\'klondike\','+i.id+')">Ред</button> <button class="btn btn-sm btn-danger" onclick="deleteItem(\'klondike\','+i.id+')">✕</button></td></tr>'
+      ).join('') || '<tr><td colspan="4">Нет данных</td></tr>';
+    }
+    
+    async function saveFullContent() {
+      try {
+        const data = JSON.parse(document.getElementById('contentEditor').value);
+        const res = await api('/content/all', { method: 'PUT', body: JSON.stringify(data) });
+        if (res.success) toast('Сохранено');
+        else toast(res.error || 'Ошибка', 'error');
+      } catch (e) {
+        toast('Неверный JSON', 'error');
+      }
+    }
+    
+    function openModal(section, item = null) {
+      currentSection = section;
+      currentItem = item;
+      document.getElementById('modalTitle').textContent = item ? 'Редактирование ' + section : 'Добавление ' + section;
+      
+      let fields = '';
+      if (section === 'services') {
+        fields = `
+          <div class="form-group"><label>Название</label><input id="field-title" value="${item?.title||''}"></div>
+          <div class="form-group"><label>Описание</label><textarea id="field-description">${item?.description||''}</textarea></div>
+          <div class="form-row"><div class="form-group"><label>Цена</label><input id="field-price" value="${item?.price||''}"></div><div class="form-group"><label>Иконка</label><input id="field-icon" value="${item?.icon||'bot'}"></div></div>
+          <div class="form-group"><label>Особенности (через запятую)</label><input id="field-features" value="${item?.features?.join(', ')||''}"></div>
+          <div class="form-group"><label><input type="checkbox" id="field-popular" ${item?.popular?'checked':''}> Популярное</label></div>
+        `;
+      } else if (section === 'portfolio') {
+        fields = `
+          <div class="form-group"><label>Название</label><input id="field-title" value="${item?.title||''}"></div>
+          <div class="form-group"><label>Описание</label><textarea id="field-description">${item?.description||''}</textarea></div>
+          <div class="form-row"><div class="form-group"><label>Категория</label><input id="field-category" value="${item?.category||''}"></div><div class="form-group"><label>Изображение</label><input id="field-image_url" value="${item?.image_url||''}"></div></div>
+          <div class="form-group"><label>Ссылка</label><input id="field-link" value="${item?.link||''}"></div>
+          <div class="form-group"><label>HTML контент</label><textarea id="field-content">${item?.content||''}</textarea></div>
+        `;
+      } else if (section === 'blog') {
+        fields = `
+          <div class="form-group"><label>Название</label><input id="field-title" value="${item?.title||''}"></div>
+          <div class="form-group"><label>Категория</label><input id="field-category" value="${item?.category||''}"></div>
+          <div class="form-group"><label>Краткое описание</label><textarea id="field-excerpt">${item?.excerpt||''}</textarea></div>
+          <div class="form-group"><label>HTML контент</label><textarea id="field-content">${item?.content||''}</textarea></div>
+          <div class="form-row"><div class="form-group"><label>Изображение</label><input id="field-image_url" value="${item?.image_url||''}"></div><div class="form-group"><label>Время чтения</label><input id="field-read_time" value="${item?.read_time||''}"></div></div>
+        `;
+      } else if (section === 'klondike') {
+        fields = `
+          <div class="form-group"><label>Название</label><input id="field-title" value="${item?.title||''}"></div>
+          <div class="form-group"><label>Описание</label><textarea id="field-description">${item?.description||''}</textarea></div>
+          <div class="form-row"><div class="form-group"><label>Категория</label><input id="field-category" value="${item?.category||''}"></div><div class="form-group"><label>Тип</label><input id="field-type" value="${item?.type||''}"></div></div>
+          <div class="form-group"><label>Контент</label><textarea id="field-content">${item?.content||''}</textarea></div>
+          <div class="form-group"><label>Команда</label><input id="field-command" value="${item?.command||''}"></div>
+        `;
+      }
+      
+      document.getElementById('modalBody').innerHTML = fields;
+      document.getElementById('editModal').classList.remove('hidden');
+    }
+    
+    function closeModal() {
+      document.getElementById('editModal').classList.add('hidden');
+    }
+    
+    function editItem(section, id) {
+      const item = content[section].find(i => i.id === id);
+      openModal(section, item);
+    }
+    
+    async function deleteItem(section, id) {
+      if (!confirm('Удалить?')) return;
+      const res = await api('/content/' + section + '/' + id, { method: 'DELETE' });
+      if (res.success) {
+        toast('Удалено');
+        loadContent();
+      } else {
+        toast(res.error || 'Ошибка', 'error');
+      }
+    }
+    
+    async function saveItem() {
+      const data = {};
+      
+      if (currentSection === 'services') {
+        data.title = document.getElementById('field-title').value;
+        data.description = document.getElementById('field-description').value;
+        data.price = document.getElementById('field-price').value;
+        data.icon = document.getElementById('field-icon').value;
+        data.features = document.getElementById('field-features').value.split(',').map(f => f.trim()).filter(f => f);
+        data.popular = document.getElementById('field-popular').checked;
+      } else if (currentSection === 'portfolio') {
+        data.title = document.getElementById('field-title').value;
+        data.description = document.getElementById('field-description').value;
+        data.category = document.getElementById('field-category').value;
+        data.image_url = document.getElementById('field-image_url').value;
+        data.link = document.getElementById('field-link').value;
+        data.content = document.getElementById('field-content').value;
+      } else if (currentSection === 'blog') {
+        data.title = document.getElementById('field-title').value;
+        data.category = document.getElementById('field-category').value;
+        data.excerpt = document.getElementById('field-excerpt').value;
+        data.content = document.getElementById('field-content').value;
+        data.image_url = document.getElementById('field-image_url').value;
+        data.read_time = document.getElementById('field-read_time').value;
+      } else if (currentSection === 'klondike') {
+        data.title = document.getElementById('field-title').value;
+        data.description = document.getElementById('field-description').value;
+        data.category = document.getElementById('field-category').value;
+        data.type = document.getElementById('field-type').value;
+        data.content = document.getElementById('field-content').value;
+        data.command = document.getElementById('field-command').value || null;
+      }
+      
+      const method = currentItem ? 'PUT' : 'POST';
+      const endpoint = currentItem ? '/content/' + currentSection + '/' + currentItem.id : '/content/' + currentSection;
+      const res = await api(endpoint, { method, body: JSON.stringify(data) });
+      
+      if (res.success || res.id) {
+        toast('Сохранено');
+        closeModal();
+        loadContent();
+      } else {
+        toast(res.error || 'Ошибка', 'error');
+      }
+    }
+    
+    // Login
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      
+      const res = await api('/auth/login', { method: 'POST', body: JSON.stringify({ username, password }) });
+      
+      if (res.token) {
+        token = res.token;
+        localStorage.setItem('admin_token', token);
+        document.getElementById('loginScreen').style.display = 'none';
+        document.getElementById('adminScreen').style.display = 'block';
+        loadContent();
+      } else {
+        toast(res.error || 'Ошибка входа', 'error');
+      }
+    });
+    
+    // Logout
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem('admin_token');
+      location.reload();
+    });
+    
+    // Tabs
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
+        document.getElementById('tab-' + btn.dataset.tab).classList.remove('hidden');
+      });
+    });
+    
+    // Check auth
+    (async () => {
+      if (token) {
+        try {
+          const me = await api('/auth/me');
+          if (me.username) {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('adminScreen').style.display = 'block';
+            loadContent();
+          }
+        } catch (e) {
+          localStorage.removeItem('admin_token');
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
