@@ -83,4 +83,4 @@ const DataLoader = {
 
 window.DataLoader = DataLoader;
 
-console.log("API BY ZOLIRYZIK")
+
