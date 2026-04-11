@@ -1,6 +1,6 @@
 class APIManager {
     constructor() {
-        this.baseURL = 'https://api.mr-vixie.su';
+        this.baseURL = 'https://srv.zoliryzik.ru';
         this.token = Utils.storage.get('admin_token') || null;
         this.isAdmin = false;
     }

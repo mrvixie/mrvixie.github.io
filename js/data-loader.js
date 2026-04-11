@@ -1,6 +1,6 @@
 const DataLoader = {
     data: null,
-    apiUrl: 'https://api.mr-vixie.su/api/content',
+    apiUrl: 'https://srv.zoliryzik.ru/api/content',
     refreshInterval: 300000,
     lastLoad: 0,
     listeners: [],
