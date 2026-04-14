@@ -1074,6 +1074,11 @@ class App {
         const existingSection = document.getElementById('section-creators');
         if (existingSection) return;
 
+        const creators = DataLoader.get('creators') || [
+            { name: 'ZoLiryzik', role: 'Создатель • Разработчик', icon: 'Z', color: '#dc2626' },
+            { name: 'VIXIE', role: 'Студия • Бренд', icon: 'V', color: '#8b5cf6' }
+        ];
+
         const section = document.createElement('section');
         section.className = 'page-section';
         section.id = 'section-creators';
@@ -1084,16 +1089,13 @@ class App {
                     <h2 class="section-title">Создатели сайта</h2>
                 </div>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-top: 32px;">
-                    <div style="background: var(--bg-secondary); padding: 24px; border-radius: 16px; border: 1px solid var(--border); text-align: center;">
-                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #dc2626, #b91c1c); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 700; color: white;">Z</div>
-                        <h3 style="font-size: 1.25rem; margin-bottom: 4px;">ZoLiryzik</h3>
-                        <p style="color: var(--text-muted); font-size: 0.875rem;">Создатель • Разработчик</p>
-                    </div>
-                    <div style="background: var(--bg-secondary); padding: 24px; border-radius: 16px; border: 1px solid var(--border); text-align: center;">
-                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #8b5cf6, #6d28d9); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 700; color: white;">V</div>
-                        <h3 style="font-size: 1.25rem; margin-bottom: 4px;">VIXIE</h3>
-                        <p style="color: var(--text-muted); font-size: 0.875rem;">Студия • Бренд</p>
-                    </div>
+                    ${creators.map(c => `
+                        <div style="background: var(--bg-secondary); padding: 24px; border-radius: 16px; border: 1px solid var(--border); text-align: center;">
+                            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, ${c.color}, ${c.color}dd); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 700; color: white;">${c.icon || c.name[0]}</div>
+                            <h3 style="font-size: 1.25rem; margin-bottom: 4px;">${c.name}</h3>
+                            <p style="color: var(--text-muted); font-size: 0.875rem;">${c.role || ''}</p>
+                        </div>
+                    `).join('')}
                 </div>
                 <div style="margin-top: 32px; padding: 24px; background: var(--bg-secondary); border-radius: 16px; border: 1px solid var(--border);">
                     <h3 style="font-size: 1rem; margin-bottom: 16px;">Разделы сайта</h3>
