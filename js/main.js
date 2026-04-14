@@ -402,7 +402,8 @@ class App {
             { id: 'shop', icon: '<circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72"/>', label: 'Магазин' },
             { id: 'blog', icon: '<path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>', label: 'Блог' },
             { id: 'juniper', icon: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>', label: 'Juniper' },
-            { id: 'contact', icon: '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>', label: 'Контакты' }
+            { id: 'contact', icon: '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>', label: 'Контакты' },
+            { id: 'creators', icon: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>', label: 'Создатели' }
         ];
 
         navList.innerHTML = sections.map(s => `
@@ -1068,6 +1069,43 @@ class App {
         pageContent.appendChild(section);
     }
 
+    renderCreators() {
+        const pageContent = document.getElementById('page-content');
+        const existingSection = document.getElementById('section-creators');
+        if (existingSection) return;
+
+        const section = document.createElement('section');
+        section.className = 'page-section';
+        section.id = 'section-creators';
+        section.innerHTML = `
+            <div class="section-container">
+                <div class="section-header">
+                    <div class="section-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Создатели</span></div>
+                    <h2 class="section-title">Создатели сайта</h2>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-top: 32px;">
+                    <div style="background: var(--bg-secondary); padding: 24px; border-radius: 16px; border: 1px solid var(--border); text-align: center;">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #dc2626, #b91c1c); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 700; color: white;">Z</div>
+                        <h3 style="font-size: 1.25rem; margin-bottom: 4px;">ZoLiryzik</h3>
+                        <p style="color: var(--text-muted); font-size: 0.875rem;">Создатель • Разработчик</p>
+                    </div>
+                    <div style="background: var(--bg-secondary); padding: 24px; border-radius: 16px; border: 1px solid var(--border); text-align: center;">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #8b5cf6, #6d28d9); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 700; color: white;">V</div>
+                        <h3 style="font-size: 1.25rem; margin-bottom: 4px;">VIXIE</h3>
+                        <p style="color: var(--text-muted); font-size: 0.875rem;">Студия • Бренд</p>
+                    </div>
+                </div>
+                <div style="margin-top: 32px; padding: 24px; background: var(--bg-secondary); border-radius: 16px; border: 1px solid var(--border);">
+                    <h3 style="font-size: 1rem; margin-bottom: 16px;">Разделы сайта</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.8;">
+                        Главная • Обо мне • Услуги • Портфолио • Магазин • Блог • Juniper • Контакты
+                    </p>
+                </div>
+            </div>
+        `;
+        pageContent.appendChild(section);
+    }
+
     renderContact(data) {
         const pageContent = document.getElementById('page-content');
         const profile = data.profile || {};
@@ -1225,6 +1263,10 @@ class App {
             if (section === 'contact') {
                 this.renderContact(DataLoader.data || {});
                 targetSection = document.getElementById('section-contact');
+            }
+            if (section === 'creators') {
+                this.renderCreators();
+                targetSection = document.getElementById('section-creators');
             }
         }
 
