@@ -1098,7 +1098,7 @@ class App {
                 <div style="margin-top: 32px; padding: 24px; background: var(--bg-secondary); border-radius: 16px; border: 1px solid var(--border);">
                     <h3 style="font-size: 1rem; margin-bottom: 16px;">Разделы сайта</h3>
                     <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.8;">
-                        Главная • Обо мне • Услуги • Портфолио • Магазин • Блог • Juniper • Контакты
+                        Главная • Обо мне • Услуги • Портфолио • Магазин • Блог • Juniper • Контакты • Создатели
                     </p>
                 </div>
             </div>
@@ -1199,6 +1199,7 @@ class App {
             </div>
             <div class="footer-bottom">
                 <span>&copy; ${new Date().getFullYear()} ZoLiryzik & VIXIE</span>
+                <span style="opacity: 0.6; font-size: 0.75rem; display: block; margin-top: 4px;">Главная • Обо мне • Услуги • Портфолио • Магазин • Блог • Juniper • Контакты • Создатели</span>
             </div>
         `;
 
