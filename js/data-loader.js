@@ -1,9 +1,11 @@
 const DataLoader = {
     data: null,
     apiUrl: 'https://api.mr-vixie.su/api/content',
+    streamUrl: 'https://api.mr-vixie.su/api/stream',
     refreshInterval: 300000,
     lastLoad: 0,
     listeners: [],
+    eventSource: null,
     
     async load() {
         try {
@@ -19,8 +21,36 @@ const DataLoader = {
         }
     },
     
+    connectStream() {
+        if (this.eventSource) return;
+        
+        this.eventSource = new EventSource(this.streamUrl);
+        
+        this.eventSource.onopen = () => {
+            console.log('SSE connected');
+        };
+        
+        this.eventSource.onmessage = async (event) => {
+            try {
+                const data = JSON.parse(event.data);
+                if (data.event === 'contentUpdated') {
+                    console.log('Content updated, reloading...');
+                    await this.load();
+                }
+            } catch (e) {}
+        };
+        
+        this.eventSource.onerror = () => {
+            console.log('SSE error, reconnecting...');
+            this.eventSource.close();
+            this.eventSource = null;
+            setTimeout(() => this.connectStream(), 5000);
+        };
+    },
+    
     async autoRefresh() {
         await this.load();
+        this.connectStream();
         setInterval(async () => {
             await this.load();
         }, this.refreshInterval);
