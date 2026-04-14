@@ -1161,7 +1161,6 @@ class App {
             </div>
             <div class="footer-bottom">
                 <span>&copy; ${new Date().getFullYear()} ZoLiryzik & VIXIE</span>
-                <span style="opacity: 0.6; font-size: 0.75rem; display: block; margin-top: 4px;">Site creators</span>
             </div>
         `;
 
