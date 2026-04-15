@@ -6,17 +6,70 @@ const DataLoader = {
     lastLoad: 0,
     listeners: [],
     eventSource: null,
+    retryCount: 0,
+    maxRetries: 3,
+    cache: new Map(),
+    cacheExpiry: 60000,
     
     async load() {
+        const cacheKey = 'content';
+        const cached = this.cache.get(cacheKey);
+        
+        if (cached && Date.now() - cached.timestamp < this.cacheExpiry) {
+            this.data = cached.data;
+            this.lastLoad = cached.timestamp;
+            this.notify();
+            return this.data;
+        }
+        
         try {
-            const response = await fetch(this.apiUrl + '?t=' + Date.now());
-            if (!response.ok) throw new Error('Failed to load data');
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
+            
+            const response = await fetch(this.apiUrl + '?t=' + Date.now(), {
+                signal: controller.signal,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            clearTimeout(timeoutId);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+            
             this.data = await response.json();
             this.lastLoad = Date.now();
+            this.retryCount = 0;
+            
+            this.cache.set(cacheKey, {
+                data: this.data,
+                timestamp: this.lastLoad
+            });
+            
             this.notify();
             return this.data;
         } catch (error) {
             console.error('Data load error:', error);
+            this.retryCount++;
+            
+            if (this.retryCount < this.maxRetries && !error.name === 'AbortError') {
+                const delay = Math.min(1000 * Math.pow(2, this.retryCount), 10000);
+                console.log(`Retrying in ${delay}ms... (${this.retryCount}/${this.maxRetries})`);
+                await new Promise(resolve => setTimeout(resolve, delay));
+                return this.load();
+            }
+            
+            if (this.cache.has(cacheKey)) {
+                const staleCache = this.cache.get(cacheKey);
+                this.data = staleCache.data;
+                console.warn('Using stale cache due to network error');
+                this.notify();
+                return this.data;
+            }
+            
+            Components.toast('Ошибка загрузки данных. Попробуйте обновить страницу.', 'error');
             return null;
         }
     },
@@ -24,35 +77,53 @@ const DataLoader = {
     connectStream() {
         if (this.eventSource) return;
         
-        this.eventSource = new EventSource(this.streamUrl);
-        
-        this.eventSource.onopen = () => {
-            console.log('SSE connected');
-        };
-        
-        this.eventSource.onmessage = async (event) => {
-            try {
-                const data = JSON.parse(event.data);
-                if (data.event === 'contentUpdated') {
-                    console.log('Content updated, reloading...');
-                    await this.load();
+        try {
+            this.eventSource = new EventSource(this.streamUrl);
+            
+            this.eventSource.onopen = () => {
+                console.log('SSE connected');
+                this.retryCount = 0;
+            };
+            
+            this.eventSource.onmessage = async (event) => {
+                try {
+                    const data = JSON.parse(event.data);
+                    if (data.event === 'contentUpdated') {
+                        console.log('Content updated, reloading...');
+                        await this.load();
+                    }
+                } catch (e) {
+                    console.error('SSE parse error:', e);
                 }
-            } catch (e) {}
-        };
-        
-        this.eventSource.onerror = () => {
-            console.log('SSE error, reconnecting...');
+            };
+            
+            this.eventSource.onerror = () => {
+                console.log('SSE error, reconnecting...');
+                this.disconnectStream();
+                setTimeout(() => this.connectStream(), 5000);
+            };
+        } catch (e) {
+            console.error('SSE connection failed:', e);
+        }
+    },
+    
+    disconnectStream() {
+        if (this.eventSource) {
             this.eventSource.close();
             this.eventSource = null;
-            setTimeout(() => this.connectStream(), 5000);
-        };
+        }
     },
     
     async autoRefresh() {
         await this.load();
         this.connectStream();
+        
         setInterval(async () => {
-            await this.load();
+            try {
+                await this.load();
+            } catch (e) {
+                console.error('Auto-refresh failed:', e);
+            }
         }, this.refreshInterval);
     },
     
@@ -75,12 +146,18 @@ const DataLoader = {
     },
     
     notify() {
-        this.listeners.forEach(cb => cb(this.data));
+        this.listeners.forEach(cb => {
+            try {
+                cb(this.data);
+            } catch (e) {
+                console.error('Listener error:', e);
+            }
+        });
     },
     
-    getStats() { return this.get('stats', {});},
-    getProfile() { return this.get('profile', {});},
-    getServices() { return this.get('services', []);},
+    getStats() { return this.get('stats', {}); },
+    getProfile() { return this.get('profile', {}); },
+    getServices() { return this.get('services', []); },
     getPortfolio() { return this.get('portfolio', []); },
     getBlog() { return this.get('blog', []); },
     getKlondike() { return this.get('klondike', []); },
@@ -102,15 +179,20 @@ const DataLoader = {
     },
     
     formatDate(dateStr) {
+        if (!dateStr) return '';
         const date = new Date(dateStr);
+        if (isNaN(date.getTime())) return dateStr;
         return date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
     },
     
     formatPrice(price) {
+        if (!price) return '';
         return new Intl.NumberFormat('ru-RU').format(price) + ' ₽';
+    },
+    
+    clearCache() {
+        this.cache.clear();
     }
 };
 
 window.DataLoader = DataLoader;
-
-

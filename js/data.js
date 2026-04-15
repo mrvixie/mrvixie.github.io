@@ -7,7 +7,9 @@ const AppData = {
         location: "Россия",
         timezone: "UTC+3",
         status: "online",
-        bio: "Привет! Меня зовут VIXIE, мне 19 лет, и я увлекаюсь дизайном, созданием ботов и сайтов. Ранее я занимался программированием в Juniper Bot, а сейчас планирую делать видеоролики-гайды по Juniper на моем YouTube канале ZoLiryzik.",
+        bio: function() {
+            return `Привет! Меня зовут **${this.name}**, мне ${this.age} лет, и я увлекаюсь дизайном, созданием ботов и сайтов. Ранее я занимался программированием в **Juniper Bot**, а сейчас планирую делать видеоролики-гайды по Juniper на моем YouTube канале **ZoLiryzik**.`;
+        },
         social: {
             discord: "vixie#0001",
             telegram: "@vixie_dev",

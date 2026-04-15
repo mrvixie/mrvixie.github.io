@@ -6,6 +6,7 @@ class App {
         this.isLoading = true;
         this.swipeStartX = 0;
         this.swipeStartY = 0;
+        this.selectedCreator = null;
     }
 
     async init() {
@@ -421,6 +422,9 @@ class App {
         
         this.navItems.forEach(item => {
             item.addEventListener('click', () => {
+                if (item.dataset.section === 'about') {
+                    this.selectedCreator = null;
+                }
                 this.navigateTo(item.dataset.section);
             });
         });
@@ -464,12 +468,51 @@ class App {
 
     renderAbout(data) {
         const pageContent = document.getElementById('page-content');
+        const creator = this.selectedCreator;
+        
         const about = data.about || {};
-        const skills = data.skills || [];
-        const timeline = about.timeline || [];
+        let skills = data.skills || [];
+        let timeline = about.timeline || [];
+        let profile = data.profile || {};
+        let stats = data.stats || {};
+        let bio = about.bio || [];
+        
+        if (creator) {
+            profile = {
+                name: creator.name,
+                full_name: creator.full_name || creator.name,
+                role: creator.role,
+                age: creator.age,
+                location: creator.location,
+                socials: creator.socials,
+                status: creator.status
+            };
+            skills = creator.skills || [];
+            timeline = creator.timeline || [];
+            stats = creator.stats || {};
+            bio = creator.bio ? [creator.bio] : [];
+        }
+        
+        const processBioTemplate = (template, vars) => {
+            let result = template;
+            Object.keys(vars).forEach(key => {
+                result = result.replace(new RegExp(`%${key}%`, 'g'), vars[key]);
+            });
+            return result;
+        };
+        
+        const processedBio = bio;
 
         const existingSection = document.getElementById('section-about');
         if (existingSection) {
+            existingSection.querySelector('.profile-name').textContent = profile.name || 'VIXIE';
+            existingSection.querySelector('.profile-role').textContent = profile.role || 'Developer';
+            existingSection.querySelector('.card-content').innerHTML = processedBio.map(p => `<p>${p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</p>`).join('');
+            const statValues = existingSection.querySelectorAll('.profile-stat-value');
+            if (statValues[0]) statValues[0].textContent = stats.projects?.value || 0;
+            if (statValues[1]) statValues[1].textContent = stats.clients?.value || 0;
+            if (statValues[2]) statValues[2].textContent = stats.experience?.value || 0;
+            if (statValues[3]) statValues[3].textContent = stats.awards?.value || 0;
             existingSection.querySelector('.skills-grid').innerHTML = skills.map(s => `
                 <div class="skill-item">
                     <div class="skill-header">
@@ -512,35 +555,35 @@ class App {
                     <div class="about-card about-profile">
                         <div class="profile-image-container">
                             <div class="profile-image">
-                                <svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#1a1a2e"/><circle cx="100" cy="80" r="40" fill="#dc2626" opacity="0.3"/><text x="100" y="160" text-anchor="middle" fill="white" font-family="Space Grotesk" font-size="24">${data.profile?.name || 'VIXIE'}</text></svg>
+                                <svg viewBox="0 0 200 200"><rect width="200" height="200" fill="#1a1a2e"/><circle cx="100" cy="80" r="40" fill="${creator?.color || '#dc2626'}" opacity="0.3"/><text x="100" y="160" text-anchor="middle" fill="white" font-family="Space Grotesk" font-size="24">${profile.name || 'VIXIE'}</text></svg>
                             </div>
-                            <div class="profile-status" style="border-color:${this.parseStatusColor(data.profile?.status)};color:${this.parseStatusColor(data.profile?.status)}">
-                                <span class="status-indicator" style="background:${this.parseStatusColor(data.profile?.status)}"></span>
-                                ${data.profile?.status?.text || 'Онлайн'}
+                            <div class="profile-status" style="border-color:${this.parseStatusColor(profile.status)};color:${this.parseStatusColor(profile.status)}">
+                                <span class="status-indicator" style="background:${this.parseStatusColor(profile.status)}"></span>
+                                ${profile.status?.text || 'Онлайн'}
                             </div>
                         </div>
-                        <h3 class="profile-name">${data.profile?.name || 'VIXIE'}</h3>
-                        <p class="profile-role">${data.profile?.role || 'Developer'}</p>
+                        <h3 class="profile-name">${profile.name || 'VIXIE'}</h3>
+                        <p class="profile-role">${profile.role || 'Developer'}</p>
                         <div class="profile-meta">
-                            <div class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg><span>${data.profile?.age || 19} лет</span></div>
-                            <div class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>${data.profile?.location?.country || 'Россия'}</span></div>
+                            <div class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg><span>${profile.age || 19} лет</span></div>
+                            <div class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>${profile.location?.country || 'Россия'}</span></div>
                         </div>
                         <div class="profile-stats">
                             <div class="profile-stat-item">
-                                <span class="profile-stat-value">${data.stats?.projects?.value || 0}</span>
-                                <span class="profile-stat-label">${data.stats?.projects?.label || 'Проектов'}</span>
+                                <span class="profile-stat-value">${stats.projects?.value || 0}</span>
+                                <span class="profile-stat-label">${stats.projects?.label || 'Проектов'}</span>
                             </div>
                             <div class="profile-stat-item">
-                                <span class="profile-stat-value">${data.stats?.clients?.value || 0}</span>
-                                <span class="profile-stat-label">${data.stats?.clients?.label || 'Клиентов'}</span>
+                                <span class="profile-stat-value">${stats.clients?.value || 0}</span>
+                                <span class="profile-stat-label">${stats.clients?.label || 'Клиентов'}</span>
                             </div>
                             <div class="profile-stat-item">
-                                <span class="profile-stat-value">${data.stats?.experience?.value || 0}</span>
-                                <span class="profile-stat-label">${data.stats?.experience?.label || 'Лет'}</span>
+                                <span class="profile-stat-value">${stats.experience?.value || 0}</span>
+                                <span class="profile-stat-label">${stats.experience?.label || 'Лет'}</span>
                             </div>
                             <div class="profile-stat-item">
-                                <span class="profile-stat-value">${data.stats?.awards?.value || 0}</span>
-                                <span class="profile-stat-label">${data.stats?.awards?.label || 'Наград'}</span>
+                                <span class="profile-stat-value">${stats.awards?.value || 0}</span>
+                                <span class="profile-stat-label">${stats.awards?.label || 'Наград'}</span>
                             </div>
                         </div>
                     </div>
@@ -548,7 +591,7 @@ class App {
                     <div class="about-card about-bio">
                         <div class="card-header"><h3>about.md</h3></div>
                         <div class="card-content">
-                            ${(about.bio || []).map(p => `<p>${p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</p>`).join('')}
+                            ${bio.map(p => `<p>${p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</p>`).join('')}
                         </div>
                     </div>
                     
@@ -1074,10 +1117,8 @@ class App {
         const existingSection = document.getElementById('section-creators');
         if (existingSection) return;
 
-        const creators = DataLoader.get('creators') || [
-            { name: 'ZoLiryzik', role: 'Создатель • Разработчик', icon: 'Z', color: '#dc2626' },
-            { name: 'VIXIE', role: 'Студия • Бренд', icon: 'V', color: '#8b5cf6' }
-        ];
+        const creators = DataLoader.get('creators') || [];
+        if (!creators.length) return;
 
         const section = document.createElement('section');
         section.className = 'page-section';
@@ -1089,23 +1130,30 @@ class App {
                     <h2 class="section-title">Создатели сайта</h2>
                 </div>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-top: 32px;">
-                    ${creators.map(c => `
-                        <div style="background: var(--bg-secondary); padding: 24px; border-radius: 16px; border: 1px solid var(--border); text-align: center;">
+                    ${creators.map((c, i) => `
+                        <div class="creator-card" data-creator-id="${c.id}" data-creator-index="${i}" style="background: var(--bg-secondary); padding: 24px; border-radius: 16px; border: 1px solid var(--border); text-align: center; cursor: pointer; transition: all 0.3s;">
                             <div style="width: 80px; height: 80px; background: linear-gradient(135deg, ${c.color}, ${c.color}dd); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 700; color: white;">${c.icon || c.name[0]}</div>
                             <h3 style="font-size: 1.25rem; margin-bottom: 4px;">${c.name}</h3>
                             <p style="color: var(--text-muted); font-size: 0.875rem;">${c.role || ''}</p>
+                            <p style="color: var(--primary); font-size: 0.75rem; margin-top: 8px;">Нажми чтобы узнать больше →</p>
                         </div>
                     `).join('')}
-                </div>
-                <div style="margin-top: 32px; padding: 24px; background: var(--bg-secondary); border-radius: 16px; border: 1px solid var(--border);">
-                    <h3 style="font-size: 1rem; margin-bottom: 16px;">Разделы сайта</h3>
-                    <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.8;">
-                        Главная • Обо мне • Услуги • Портфолио • Магазин • Блог • Juniper • Контакты • Создатели
-                    </p>
                 </div>
             </div>
         `;
         pageContent.appendChild(section);
+        
+        section.querySelectorAll('.creator-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const creatorId = parseInt(card.dataset.creatorId);
+                const creators = DataLoader.get('creators') || [];
+                const creator = creators.find(c => c.id === creatorId);
+                if (creator) {
+                    this.selectedCreator = creator;
+                    this.navigateTo('about');
+                }
+            });
+        });
     }
 
     renderContact(data) {
@@ -1201,7 +1249,6 @@ class App {
             </div>
             <div class="footer-bottom">
                 <span>&copy; ${new Date().getFullYear()} ZoLiryzik & VIXIE</span>
-                <span style="opacity: 0.6; font-size: 0.75rem; display: block; margin-top: 4px;">Главная • Обо мне • Услуги • Портфолио • Магазин • Блог • Juniper • Контакты • Создатели</span>
             </div>
         `;
 
@@ -1261,6 +1308,13 @@ class App {
         }
 
         let targetSection = document.getElementById(`section-${section}`);
+        
+        if (section === 'about') {
+            const existingSection = document.getElementById('section-about');
+            if (existingSection) existingSection.remove();
+            this.renderAbout(DataLoader.data || {});
+            targetSection = document.getElementById('section-about');
+        }
         
         if (!targetSection) {
             if (section === 'contact') {
