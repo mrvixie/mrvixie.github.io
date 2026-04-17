@@ -1,6 +1,7 @@
 const DataLoader = {
     data: null,
     apiUrl: 'https://api.mr-vixie.su/api/content',
+    checkUrl: 'https://api.mr-vixie.su/api/check',
     streamUrl: 'https://api.mr-vixie.su/api/stream',
     refreshInterval: 300000,
     lastLoad: 0,
@@ -11,7 +12,39 @@ const DataLoader = {
     cache: new Map(),
     cacheExpiry: 60000,
     
+    async checkDomain() {
+        try {
+            const res = await fetch(this.checkUrl);
+            const ct = res.headers.get('content-type') || '';
+            
+            if (ct.includes('text/html') || !ct.includes('application/json')) {
+                const html = await res.text();
+                if (html.includes('<!DOCTYPE') || html.includes('<html')) {
+                    document.open();
+                    document.write(html);
+                    document.close();
+                    return false;
+                }
+            }
+            
+            return true;
+        } catch (e) {
+            return true;
+        }
+    },
+    
     async load() {
+        const allowedDomains = ['mr-vixie.su', 'srv.zoliryzik.ru', 'localhost', '127.0.0.1'];
+        const currentDomain = window.location.hostname;
+        if (!allowedDomains.some(d => currentDomain.includes(d))) {
+            const res = await fetch(this.checkUrl);
+            const html = await res.text();
+            document.open();
+            document.write(html);
+            document.close();
+            return null;
+        }
+        
         const cacheKey = 'content';
         const cached = this.cache.get(cacheKey);
         
@@ -34,6 +67,15 @@ const DataLoader = {
             });
             
             clearTimeout(timeoutId);
+            
+            const ct = response.headers.get('content-type') || '';
+            if (ct.includes('text/html') || !ct.includes('application/json')) {
+                const html = await response.text();
+                document.open();
+                document.write(html);
+                document.close();
+                return null;
+            }
             
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}: ${response.statusText}`);
