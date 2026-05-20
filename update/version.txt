@@ -1,0 +1,2 @@
+APP_VERSION=2.0.1
+URL=https://mr-vixie.su/download
