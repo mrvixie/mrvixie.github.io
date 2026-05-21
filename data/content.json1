@@ -1,0 +1,946 @@
+{
+  "_comment": "=== VIXIE STUDIO CONTENT CONFIG ===",
+  "_version": "2.0",
+  "_last_updated": "2026-04-10",
+  "meta": {
+    "site_name": "VIXIE Studio",
+    "site_description": "Найди что-нибудь для себя",
+    "site_keywords": [
+      "Discord боты",
+      "Веб-дизайн",
+      "UI/UX",
+      "Juniper",
+      "Telegram боты"
+    ],
+    "version": "2.0.0",
+    "refresh_interval": 300000,
+    "author": "VIXIE"
+  },
+  "profile": {
+    "name": "VIXIE",
+    "full_name": "Виктор",
+    "age": 19,
+    "role": "Developer & Designer",
+    "avatar_url": "",
+    "location": {
+      "country": "Россия",
+      "city": "Москва",
+      "timezone": "UTC+3"
+    },
+    "status": {
+      "online": true,
+      "text": "Доступен для работы",
+      "color": "green",
+      "pulse": true
+    },
+    "socials": {
+      "discord": "vixie#0001",
+      "telegram": "@vixie_dev",
+      "youtube": "@ZoLiryzik",
+      "github": "mrvixie"
+    },
+    "email": "contact@vixie.dev"
+  },
+  "about": {
+    "title": "ВСТРЕЧАЙТЕ VIXIE",
+    "bio": [
+      "Привет! Меня зовут **VIXIE**, мне 19 лет, и я увлекаюсь дизайном, созданием ботов и сайтов.",
+      "Ранее я занимался программированием в **Juniper Bot**, а сейчас планирую делать видеоролики-гайды по Juniper на моем YouTube канале **ZoLiryzik**.",
+      "В данный момент я работаю над несколькими проектами, включая собственную студию разработки и образовательный контент."
+    ],
+    "timeline": [
+      {
+        "year": 2024,
+        "title": "Основание VIXIE Studio",
+        "description": "Запуск собственной студии разработки"
+      },
+      {
+        "year": 2023,
+        "title": "Juniper Bot Team",
+        "description": "Работа в команде разработки Juniper Bot"
+      },
+      {
+        "year": 2022,
+        "title": "YouTube канал",
+        "description": "Запуск канала ZoLiryzik с гайдами"
+      },
+      {
+        "year": 2021,
+        "title": "Первые проекты",
+        "description": "Начало карьеры фрилансера"
+      },
+      {
+        "year": 2019,
+        "title": "Начало пути",
+        "description": "Первые шаги в программировании"
+      }
+    ]
+  },
+  "skills": [
+    {
+      "name": "Python",
+      "level": 95,
+      "icon": "python",
+      "color": "#3776AB"
+    },
+    {
+      "name": "JavaScript",
+      "level": 88,
+      "icon": "javascript",
+      "color": "#F7DF1E"
+    },
+    {
+      "name": "Discord.js",
+      "level": 92,
+      "icon": "discord",
+      "color": "#5865F2"
+    },
+    {
+      "name": "HTML/CSS",
+      "level": 90,
+      "icon": "html",
+      "color": "#E34F26"
+    },
+    {
+      "name": "UI/UX Дизайн",
+      "level": 85,
+      "icon": "design",
+      "color": "#dc2626"
+    },
+    {
+      "name": "Figma",
+      "level": 82,
+      "icon": "figma",
+      "color": "#F24E1E"
+    },
+    {
+      "name": "React",
+      "level": 75,
+      "icon": "react",
+      "color": "#61DAFB"
+    },
+    {
+      "name": "Node.js",
+      "level": 78,
+      "icon": "nodejs",
+      "color": "#339933"
+    },
+    {
+      "name": "SQL",
+      "level": 70,
+      "icon": "database",
+      "color": "#4479A1"
+    },
+    {
+      "name": "Git",
+      "level": 85,
+      "icon": "git",
+      "color": "#F05032"
+    }
+  ],
+  "status_colors": {
+    "preset": {
+      "red": "#ef4444",
+      "orange": "#f97316",
+      "amber": "#f59e0b",
+      "yellow": "#eab308",
+      "lime": "#84cc16",
+      "green": "#22c55e",
+      "emerald": "#10b981",
+      "teal": "#14b8a6",
+      "cyan": "#06b6d4",
+      "sky": "#0ea5e9",
+      "blue": "#3b82f6",
+      "indigo": "#6366f1",
+      "violet": "#8b5cf6",
+      "purple": "#a855f7",
+      "fuchsia": "#d946ef",
+      "pink": "#ec4899",
+      "rose": "#f43f5e"
+    },
+    "custom": {
+      "format_hex": "#RRGGBB",
+      "format_rgb": "rgb(R, G, B)",
+      "format_hsl": "hsl(H, S%, L%)"
+    }
+  },
+  "services": [
+    {
+      "id": 1,
+      "title": "Разработка Discord ботов",
+      "description": "Создание многофункциональных Discord ботов с использованием discord.js, Python или других технологий.",
+      "price": "от 3 000",
+      "price_suffix": "₽",
+      "features": [
+        "Настройка команд и slash-команд",
+        "Система модерации",
+        "Автоматизация процессов",
+        "Интеграция с API",
+        "База данных"
+      ],
+      "icon": "bot",
+      "popular": true
+    },
+    {
+      "id": 2,
+      "title": "Веб-дизайн",
+      "description": "Создание уникального и современного дизайна для вашего сайта или веб-приложения.",
+      "price": "от 5 000",
+      "price_suffix": "₽",
+      "features": [
+        "UI/UX дизайн",
+        "Адаптивная вёрстка",
+        "Интерактивные элементы",
+        "Анимации и переходы",
+        "Figma макеты"
+      ],
+      "icon": "design",
+      "popular": false
+    },
+    {
+      "id": 3,
+      "title": "UI/UX Дизайн",
+      "description": "Проектирование пользовательских интерфейсов для мобильных и веб-приложений.",
+      "price": "от 7 000",
+      "price_suffix": "₽",
+      "features": [
+        "Исследование пользователей",
+        "Прототипирование",
+        "Дизайн интерфейса",
+        "Дизайн-система",
+        "Документация"
+      ],
+      "icon": "ui",
+      "popular": false
+    },
+    {
+      "id": 4,
+      "title": "Разработка Telegram ботов",
+      "description": "Создание умных Telegram ботов для автоматизации и бизнеса.",
+      "price": "от 2 500",
+      "price_suffix": "₽",
+      "features": [
+        "Команды и inline-режим",
+        "Оплата через бот",
+        "Админ-панель",
+        "Рассылки",
+        "Интеграции"
+      ],
+      "icon": "telegram",
+      "popular": false
+    },
+    {
+      "id": 5,
+      "title": "Консультация",
+      "description": "Помощь в решении технических вопросов и советы по вашему проекту.",
+      "price": "от 1 500",
+      "price_suffix": "₽/час",
+      "features": [
+        "Аудит кода",
+        "Оптимизация",
+        "Архитектура",
+        "Технические советы",
+        "Code review"
+      ],
+      "icon": "consultation",
+      "popular": false
+    },
+    {
+      "id": 6,
+      "title": "Создание логотипа",
+      "description": "Разработка уникального логотипа для вашего бренда или проекта.",
+      "price": "от 2 000",
+      "price_suffix": "₽",
+      "features": [
+        "Уникальный дизайн",
+        "Несколько вариантов",
+        "Исходные файлы",
+        "Разные форматы",
+        "Брендбук"
+      ],
+      "icon": "logo",
+      "popular": false
+    }
+  ],
+  "portfolio": [
+    {
+      "id": 1,
+      "title": "ZoLiryzik1",
+      "category": "bot",
+      "description": "YouTube канал с гайдами по Juniper Bot и разработке Discord ботов",
+      "image_url": "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=800&h=450&fit=crop",
+      "link": "#",
+      "featured": true,
+      "content": "<h3>О проекте</h3><p>YouTube канал ZoLiryzik - это образовательный контент о разработке Discord ботов и работе с Juniper Bot. Канал включает видео-гайды, туториалы и обзоры функций.</p><h3>Технологии</h3><ul><li>Discord.js</li><li>Python (discord.py)</li><li>Ffmpeg</li><li>YouTube API</li></ul><h3>Результаты</h3><p>Более 1000 подписчиков и 50+ видео с гайдами.</p>",
+      "links": [
+        {
+          "text": "YouTube",
+          "url": "https://youtube.com/@ZoLiryzik"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Factory Server",
+      "category": "design",
+      "description": "Дизайн Discord сервера для игрового сообщества",
+      "image_url": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=450&fit=crop",
+      "link": "#",
+      "featured": false,
+      "content": "<h3>О проекте</h3><p>Полный редизайн Discord сервера для игрового сообщества Factory. Включает уникальные каналы, роли, ботов и автоматизации.</p><h3>Что сделано</h3><ul><li>Дизайн всех каналов и категорий</li><li>Система ролей с автоназначением</li><li>Настройка ботов модерации</li><li>Автоматические приветствия</li></ul>",
+      "links": []
+    },
+    {
+      "id": 3,
+      "title": "ModBot Pro",
+      "category": "bot",
+      "description": "Продвинутый бот для модерации с AI функциями",
+      "image_url": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&h=450&fit=crop",
+      "link": "#",
+      "featured": false,
+      "content": "<h3>О проекте</h3><p>Многофункциональный Discord бот с возможностями AI-модерации. Использует машинное обучение для определения токсичного контента.</p><h3>Функции</h3><ul><li>AI модерация сообщений</li><li>Автоматическое удаление спама</li><li>Система предупреждений</li><li>Логирование всех действий</li><li>Статистика сервера</li></ul>",
+      "links": [
+        {
+          "text": "GitHub",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Portfolio Website",
+      "category": "web",
+      "description": "Персональный сайт-портфолио для дизайнера",
+      "image_url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=450&fit=crop",
+      "link": "#",
+      "featured": false,
+      "content": "<h3>О проекте</h3><p>Современный сайт-портфолио для UX дизайнера. Включает анимации, галерею работ и форму обратной связи.</p><h3>Особенности</h3><ul><li>Адаптивный дизайн</li><li>GSAP анимации</li><li>Интерактивная галерея</li><li>Интеграция с Formspree</li></ul>",
+      "links": [
+        {
+          "text": "Сайт",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Music Dashboard",
+      "category": "web",
+      "description": "Веб-панель управления музыкальным ботом",
+      "image_url": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=800&h=450&fit=crop",
+      "link": "#",
+      "featured": false,
+      "content": "<h3>О проекте</h3><p>Веб-интерфейс для управления музыкальным Discord ботом. Позволяет ставить треки в очередь, управлять громкостью и видеть текущий плейлист.</p><h3>Функции</h3><ul><li>Поиск и добавление треков</li><li>Управление очередью</li><li>Плеер с визуализацией</li><li>История воспроизведения</li></ul>",
+      "links": []
+    },
+    {
+      "id": 6,
+      "title": "Game Store UI",
+      "category": "design",
+      "description": "Интерфейс магазина игровых аккаунтов",
+      "image_url": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&h=450&fit=crop",
+      "link": "#",
+      "featured": false,
+      "content": "<h3>О проекте</h3><p>Дизайн интерфейса для маркетплейса игровых аккаунтов. Включает каталог, корзину и личный кабинет.</p><h3>Компоненты</h3><ul><li>Каталог с фильтрами</li><li>Карточки товаров</li><li>Корзина покупок</li><li>Личный кабинет</li></ul>",
+      "links": []
+    }
+  ],
+  "klondike": [
+    {
+      "id": 1,
+      "title": "Команды Juniper Bot",
+      "category": "articles",
+      "description": "Полный список команд Juniper Bot с описанием",
+      "type": "copy",
+      "content": "https://docs.juniper.bot/commands",
+      "command": "!help",
+      "badge": "Популярное"
+    },
+    {
+      "id": 2,
+      "title": "Шаблон Discord сервера",
+      "category": "templates",
+      "description": "Готовый шаблон Discord сервера с настроенными каналами",
+      "type": "download",
+      "content": "templates/discord-server-template.json",
+      "command": "!server template"
+    },
+    {
+      "id": 3,
+      "title": "Набор эмодзи (200+)",
+      "category": "assets",
+      "description": "Коллекция эмодзи для Discord серверов",
+      "type": "download",
+      "content": "assets/emoji-pack.zip",
+      "command": "!emoji pack"
+    },
+    {
+      "id": 4,
+      "title": "Гайд по модерации",
+      "category": "articles",
+      "description": "Статья о эффективной модерации Discord серверов",
+      "type": "read",
+      "content": "# Гайд по модерации Discord серверов\n\n## Основные принципы\n\n1. **Будьте последовательны** - применяйте правила одинаково ко всем\n2. **Документируйте** - записывайте нарушения и решения\n3. **Общайтесь** - объясняйте участникам почему их предупреждают\n\n## Инструменты модерации\n\n- Система предупреждений\n- Автоматическая модерация\n- Логирование сообщений\n- Тicket система\n\n## Лучшие практики\n\n- Создайте чёткие правила сервера\n- Назначьте достаточно модераторов\n- Используйте двухфакторную аутентификацию"
+    },
+    {
+      "id": 5,
+      "title": "CSS сниппеты",
+      "category": "code",
+      "description": "Полезные CSS сниппеты для веб-разработки",
+      "type": "copy",
+      "content": "/* Glass Effect */\n.glass {\n  background: rgba(255, 255, 255, 0.1);\n  backdrop-filter: blur(10px);\n  border: 1px solid rgba(255, 255, 255, 0.2);\n  border-radius: 12px;\n}\n\n/* Gradient Text */\n.gradient-text {\n  background: linear-gradient(135deg, #dc2626, #8b5cf6);\n  -webkit-background-clip: text;\n  -webkit-text-fill-color: transparent;\n}",
+      "command": null
+    },
+    {
+      "id": 6,
+      "title": "Python бот заглушка",
+      "category": "code",
+      "description": "Базовая структура Discord бота на Python",
+      "type": "copy",
+      "content": "import discord\nfrom discord.ext import commands\n\nbot = commands.Bot(command_prefix='!', intents=discord.Intents.all())\n\n@bot.event\nasync def on_ready():\n    print(f'Бот {bot.user} запущен!')\n\n@bot.command()\nasync def ping(ctx):\n    await ctx.send('Pong!')\n\nbot.run('TOKEN')",
+      "command": null
+    }
+  ],
+  "blog": [
+    {
+      "id": 1,
+      "title": "Как создать Discord бота за 10 минут",
+      "category": "Tutorial",
+      "excerpt": "Пошаговое руководство по созданию простого Discord бота с использованием discord.js",
+      "content": "<h2>Введение</h2><p>Discord боты - это отличный способ автоматизировать задачи на вашем сервере. В этом гайде мы создадим простого бота, который будет отвечать на команды.</p><h2>Что нам понадобится</h2><ul><li>Node.js (версия 16.11.0 или выше)</li><li>Терминал или командная строка</li><li>Текстовый редактор (VS Code)</li></ul><h2>Шаг 1: Создание проекта</h2><p>Откройте терминал и создайте новую папку для проекта:</p><pre><code>mkdir my-discord-bot\ncd my-discord-bot\nnpm init -y</code></pre><h2>Шаг 2: Установка Discord.js</h2><pre><code>npm install discord.js</code></pre><h2>Шаг 3: Создание бота</h2><p>Создайте файл index.js и добавьте следующий код:</p><pre><code>const { Client, GatewayIntentBits } = require('discord.js');\n\nconst client = new Client({\n  intents: [\n    GatewayIntentBits.Guilds,\n    GatewayIntentBits.GuildMessages,\n    GatewayIntentBits.MessageContent\n  ]\n});\n\nclient.on('ready', () => {\n  console.log(`Бот ${client.user.tag} запущен!`);\n});\n\nclient.on('messageCreate', (message) => {\n  if (message.content === '!ping') {\n    message.reply('Pong!');\n  }\n});\n\nclient.login('YOUR_TOKEN');</code></pre><h2>Заключение</h2><p>Поздравляю! Вы создали своего первого Discord бота. Теперь вы можете добавлять новые команды и функции.</p>",
+      "image_url": "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=800&h=450&fit=crop",
+      "date": "2024-03-15",
+      "author": "VIXIE",
+      "read_time": "10 мин",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "Топ-10 плагинов для Figma",
+      "category": "Design",
+      "excerpt": "Обзор лучших плагинов, которые ускорят вашу работу в Figma",
+      "content": "<h2>Обзор плагинов</h2><p>Figma - это мощный инструмент для дизайна интерфейсов. Плагины могут значительно ускорить вашу работу. Вот мои фавориты:</p><h3>1. Iconify</h3><p>Доступ к более чем 50,000 иконкам прямо в Figma. Поддерживает множество иконографических библиотек.</p><h3>2. Remove BG</h3><p>Удаление фона с изображений одним кликом с помощью AI.</p><h3>3. Unsplash</h3><p>Поиск и вставка качественных фотографий напрямую в дизайн.</p><h3>4. Stark</h3><p>Проверка контрастности для доступности (a11y).</p><h3>5. Content Reel</h3><p>Генератор фиктивного контента для прототипов.</p><h3>6. Blobs</h3><p>Создание органических форм и блобов.</p><h3>7. Chart</h3><p>Вставка графиков и диаграмм в дизайн.</p><h3>8. Autoflow</h3><p>Автоматическое создание флоу-диаграмм между фреймами.</p><h3>9.Lorem Ipsum</h3><p>Быстрая вставка текста-заглушки.</p><h3>10. Copy Grid to Clipboard</h3><p>Экспорт сетки для использования в CSS.</p>",
+      "image_url": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=450&fit=crop",
+      "date": "2024-03-10",
+      "author": "VIXIE",
+      "read_time": "5 мин",
+      "featured": false
+    },
+    {
+      "id": 3,
+      "title": "Оптимизация кода Python",
+      "category": "Programming",
+      "excerpt": "Практические советы по улучшению производительности Python кода",
+      "content": "<h2>Зачем оптимизировать?</h2><p>Python - интерпретируемый язык, что означает некоторые накладные расходы. Оптимизация может значительно ускорить ваш код.</p><h2>Советы по оптимизации</h2><h3>1. Используйте встроенные функции</h3><p>Встроенные функции (sum, map, filter) работают быстрее циклов:</p><pre><code># Медленно\ntotal = 0\nfor i in range(1000000):\n    total += i\n\n# Быстро\ntotal = sum(range(1000000))</code></pre><h3>2. List comprehensions</h3><pre><code># Быстрее чем append в цикле\nsquares = [x**2 for x in range(1000)]</code></pre><h3>3. Используйте __slots__</h3><p>Уменьшает потребление памяти классами:</p><pre><code>class Point:\n    __slots__ = ['x', 'y']</code></pre><h3>4. Профилирование</h3><p>Используйте cProfile для поиска узких мест:</p><pre><code>import cProfile\ncProfile.run('your_function()')</code></pre>",
+      "image_url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=450&fit=crop",
+      "date": "2024-03-05",
+      "author": "VIXIE",
+      "read_time": "8 мин",
+      "featured": false
+    },
+    {
+      "id": 4,
+      "title": "Тренды веб-дизайна 2024",
+      "category": "Design",
+      "excerpt": "Какие стили и технологии будут популярны в веб-дизайне в этом году",
+      "content": "<h2>Актуальные тренды</h2><p>Веб-дизайн постоянно эволюционирует. Вот что будет популярно:</p><h3>1. Glassmorphism</h3><p>Размытые полупрозрачные элементы поверх других слоёв. Используйте backdrop-filter: blur() для создания эффекта стекла.</p><h3>2. Неоморфизм</h3><p>Мягкие тени и светлые/тёмные градиенты создают впечатление объёма.</p><h3>3. Микровзаимодействия</h3><p>Анимации при наведении, клике и других действиях делают интерфейс живым.</p><h3>4. Тёмные темы</h3><p>Тёмные интерфейсы остаются популярными. Добавьте переключатель темы.</p><h3>5. Асимметрия</h3><p>Отход от сеток к более креативным лейаутам.</p><h3>6. 3D элементы</h3><p>CSS 3D transforms и WebGL для интерактивных элементов.</p><h3>7. Типографика</h3><p>Крупные шрифты и variable fonts для гибкости.</p>",
+      "image_url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=450&fit=crop",
+      "date": "2024-02-28",
+      "author": "VIXIE",
+      "read_time": "7 мин",
+      "featured": false
+    }
+  ],
+  "juniper": [
+    {
+      "id": 1,
+      "title": "Настройка Juniper Bot",
+      "type": "video",
+      "description": "Полное руководство по настройке Juniper Bot на вашем Discord сервере",
+      "image_url": "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=800&h=450&fit=crop",
+      "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "command": "!juniper setup",
+      "date": "2024-03-12"
+    },
+    {
+      "id": 2,
+      "title": "Система модерации",
+      "type": "article",
+      "description": "Как настроить автоматическую модерацию с помощью Juniper",
+      "image_url": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&h=450&fit=crop",
+      "content": "<h3>Автоматическая модерация</h3><p>Juniper Bot предоставляет мощные инструменты для модерации вашего Discord сервера.</p><h4>Функции:</h4><ul><li>Автоудаление спама и ссылок</li><li>Фильтр нецензурной лексики</li><li>Система предупреждений</li><li>Логирование действий</li></ul><h4>Команды:</h4><pre><code>!mod enable\n!mod set warn_limit 3\n!mod autorole Member</code></pre>",
+      "command": "!mod enable",
+      "date": "2024-03-08"
+    },
+    {
+      "id": 3,
+      "title": "Настройка приветствий",
+      "type": "article",
+      "description": "Создание красивых приветственных сообщений",
+      "image_url": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=450&fit=crop",
+      "content": "<h3>Приветственные сообщения</h3><p>Создайте тёплую атмосферу для новых участников с помощью настраиваемых приветствий.</p><h4>Настройка:</h4><pre><code>!welcome set Добро пожаловать, {user}!\n!welcome channel #приветствия\n!welcome embed true</code></pre><h4>Переменные:</h4><ul><li>{user} - упоминание пользователя</li><li>{server} - название сервера</li><li>{count} - количество участников</li></ul>",
+      "command": "!welcome set",
+      "date": "2024-03-01"
+    },
+    {
+      "id": 4,
+      "title": "Создание ролей",
+      "type": "article",
+      "description": "Автоматическое управление ролями участников",
+      "image_url": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=450&fit=crop",
+      "content": "<h3>Система ролей</h3><p>Автоматизируйте выдачу ролей на основе реакций или команд.</p><h4>Команды:</h4><pre><code>!role create Игрок :video_game:\n!rolepanel create\n!role add @User Игрок</code></pre><h4>Автороли:</h4><pre><code>!autorole set @Verified\n!autorole remove @Guest</code></pre>",
+      "command": "!role create",
+      "date": "2024-02-25"
+    }
+  ],
+  "commands": [
+    {
+      "command": "!juniper setup",
+      "description": "Настройка бота на сервере"
+    },
+    {
+      "command": "!mod enable",
+      "description": "Включение модерации"
+    },
+    {
+      "command": "!welcome set [сообщение]",
+      "description": "Настройка приветствия"
+    },
+    {
+      "command": "!ticket create",
+      "description": "Создание тикета"
+    },
+    {
+      "command": "!level enable",
+      "description": "Включение системы уровней"
+    },
+    {
+      "command": "!music play [url]",
+      "description": "Воспроизведение музыки"
+    },
+    {
+      "command": "!economy balance",
+      "description": "Проверить баланс"
+    },
+    {
+      "command": "!poll create",
+      "description": "Создать опрос"
+    }
+  ],
+  "gallery": [
+    {
+      "id": 1,
+      "title": "Discord Server Design",
+      "category": "Design"
+    },
+    {
+      "id": 2,
+      "title": "Bot Dashboard",
+      "category": "Web"
+    },
+    {
+      "id": 3,
+      "title": "Mobile App UI",
+      "category": "UI/UX"
+    },
+    {
+      "id": 4,
+      "title": "Landing Page",
+      "category": "Web"
+    },
+    {
+      "id": 5,
+      "title": "Logo Collection",
+      "category": "Branding"
+    },
+    {
+      "id": 6,
+      "title": "E-commerce Design",
+      "category": "Web"
+    },
+    {
+      "id": 7,
+      "title": "Game Interface",
+      "category": "Gaming"
+    },
+    {
+      "id": 8,
+      "title": "Dashboard Dark",
+      "category": "Web"
+    }
+  ],
+  "stats": {
+    "projects": {
+      "value": 150,
+      "label": "Проектов"
+    },
+    "clients": {
+      "value": 89,
+      "label": "Клиентов"
+    },
+    "experience": {
+      "value": 5,
+      "label": "Лет опыта"
+    },
+    "awards": {
+      "value": 24,
+      "label": "Наград"
+    }
+  },
+  "tags": [
+    "Discord",
+    "Бот",
+    "Дизайн",
+    "Веб",
+    "Python",
+    "JavaScript",
+    "Juniper",
+    "UI/UX",
+    "Логотип",
+    "API"
+  ],
+  "images": {
+    "logo": "",
+    "og_image": "",
+    "favicon": ""
+  },
+  "theme": {
+    "primary_color": "#dc2626",
+    "secondary_color": "#8b5cf6",
+    "accent_color": "#f59e0b",
+    "dark_mode": true,
+    "particles": true,
+    "animations": true
+  },
+  "_navigation": {
+    "items": [
+      {
+        "id": "home",
+        "label": "Главная",
+        "icon": "home"
+      },
+      {
+        "id": "about",
+        "label": "Обо мне",
+        "icon": "user"
+      },
+      {
+        "id": "services",
+        "label": "Услуги",
+        "icon": "grid"
+      },
+      {
+        "id": "portfolio",
+        "label": "Портфолио",
+        "icon": "folder"
+      },
+      {
+        "id": "klondike",
+        "label": "Клондайк",
+        "icon": "gift"
+      },
+      {
+        "id": "blog",
+        "label": "Блог",
+        "icon": "file-text"
+      },
+      {
+        "id": "juniper",
+        "label": "Juniper",
+        "icon": "zap"
+      },
+      {
+        "id": "contact",
+        "label": "Контакты",
+        "icon": "mail"
+      }
+    ]
+  },
+  "_hero": {
+    "badge": "Developer & Designer",
+    "title_lines": [
+      "Найди",
+      "что-нибудь",
+      "для себя"
+    ],
+    "cta_primary": {
+      "text": "Мои услуги",
+      "section": "services"
+    },
+    "cta_secondary": {
+      "text": "Смотреть работы",
+      "section": "portfolio"
+    },
+    "tech_label": "Технологии:"
+  },
+  "_footer": {
+    "copyright_text": "Все права защищены.",
+    "made_text": "Сделано с",
+    "made_country": "в России"
+  },
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Алексей К.",
+      "role": "Владелец Discord сервера",
+      "avatar": "",
+      "text": "Отличная работа! Бот был создан быстро и качественно. Все функции работают идеально.",
+      "rating": 5,
+      "project": "Discord бот модерации"
+    },
+    {
+      "id": 2,
+      "name": "Мария С.",
+      "role": "UI/UX Дизайнер",
+      "avatar": "",
+      "text": "Превосходный дизайн! VIXIE понял моё видение с первого раза и реализовал его даже лучше.",
+      "rating": 5,
+      "project": "Дизайн веб-сайта"
+    },
+    {
+      "id": 3,
+      "name": "Дмитрий В.",
+      "role": "Разработчик",
+      "avatar": "",
+      "text": "Профессиональный подход и отличная коммуникация. Рекомендую!",
+      "rating": 5,
+      "project": "Telegram бот"
+    }
+  ],
+  "faq": [
+    {
+      "id": 1,
+      "question": "Сколько времени занимает разработка Discord бота?",
+      "answer": "Время разработки зависит от сложности проекта. Простой бот может быть готов за 2-3 дня, более сложные проекты занимают 1-2 недели."
+    },
+    {
+      "id": 2,
+      "question": "Предоставляете ли вы поддержку после сдачи проекта?",
+      "answer": "Да, я предоставляю 30 дней бесплатной технической поддержки после сдачи проекта. Также возможно продление поддержки по договорённости."
+    },
+    {
+      "id": 3,
+      "question": "Можно ли доработать проект после сдачи?",
+      "answer": "Конечно! Я всегда открыт к доработкам и улучшениям. Стоимость дополнительных изменений обсуждается индивидуально."
+    },
+    {
+      "id": 4,
+      "question": "Какие технологии вы используете?",
+      "answer": "Для Discord ботов: discord.js, discord.py, discord-hc. Для веб-проектов: HTML/CSS/JavaScript, React, Node.js. Для дизайна: Figma, Photoshop."
+    },
+    {
+      "id": 5,
+      "question": "Есть ли гарантия возврата денег?",
+      "answer": "Если проект не соответствует договорённости или не может быть реализован, я возвращаю предоплату в полном объёме."
+    }
+  ],
+  "pricing_tiers": [
+    {
+      "id": "basic",
+      "name": "Базовый",
+      "price": 5000,
+      "description": "Идеально для простых проектов",
+      "features": [
+        {
+          "text": "До 10 команд",
+          "included": true
+        },
+        {
+          "text": "Базовая модерация",
+          "included": true
+        },
+        {
+          "text": "Приветственные сообщения",
+          "included": true
+        },
+        {
+          "text": "Кастомные команды",
+          "included": false
+        },
+        {
+          "text": "API интеграции",
+          "included": false
+        },
+        {
+          "text": "Приоритетная поддержка",
+          "included": false
+        }
+      ]
+    },
+    {
+      "id": "standard",
+      "name": "Стандартный",
+      "price": 15000,
+      "description": "Лучший выбор для серверов",
+      "features": [
+        {
+          "text": "До 50 команд",
+          "included": true
+        },
+        {
+          "text": "Продвинутая модерация",
+          "included": true
+        },
+        {
+          "text": "Система уровней",
+          "included": true
+        },
+        {
+          "text": "Кастомные команды",
+          "included": true
+        },
+        {
+          "text": "API интеграции",
+          "included": true
+        },
+        {
+          "text": "Приоритетная поддержка",
+          "included": false
+        }
+      ],
+      "popular": true
+    },
+    {
+      "id": "premium",
+      "name": "Премиум",
+      "price": 35000,
+      "description": "Максимум возможностей",
+      "features": [
+        {
+          "text": "Безлимит команд",
+          "included": true
+        },
+        {
+          "text": "AI модерация",
+          "included": true
+        },
+        {
+          "text": "Полная статистика",
+          "included": true
+        },
+        {
+          "text": "Кастомные команды",
+          "included": true
+        },
+        {
+          "text": "API интеграции",
+          "included": true
+        },
+        {
+          "text": "Приоритетная поддержка",
+          "included": true
+        }
+      ]
+    }
+  ],
+  "features": [
+    {
+      "id": 1,
+      "icon": "zap",
+      "title": "Быстрая разработка",
+      "description": "Создаю проекты в кратчайшие сроки без потери качества"
+    },
+    {
+      "id": 2,
+      "icon": "code",
+      "title": "Чистый код",
+      "description": "Пишу понятный и поддерживаемый код с комментариями"
+    },
+    {
+      "id": 3,
+      "icon": "shield",
+      "title": "Безопасность",
+      "description": "Уделяю особое внимание защите данных и безопасности"
+    },
+    {
+      "id": 4,
+      "icon": "headphones",
+      "title": "Поддержка 24/7",
+      "description": "Всегда на связи и готов помочь с любыми вопросами"
+    },
+    {
+      "id": 5,
+      "icon": "refresh",
+      "title": "Обновления",
+      "description": "Регулярные обновления и улучшения вашего проекта"
+    },
+    {
+      "id": 6,
+      "icon": "award",
+      "title": "Гарантия качества",
+      "description": "100% удовлетворённость или возврат средств"
+    }
+  ],
+  "process": [
+    {
+      "step": 1,
+      "title": "Обсуждение",
+      "description": "Собираю требования и пожелания",
+      "duration": "1-2 дня"
+    },
+    {
+      "step": 2,
+      "title": "Проектирование",
+      "description": "Создаю структуру и дизайн",
+      "duration": "2-3 дня"
+    },
+    {
+      "step": 3,
+      "title": "Разработка",
+      "description": "Пишу код и тестирую",
+      "duration": "3-7 дней"
+    },
+    {
+      "step": 4,
+      "title": "Тестирование",
+      "description": "Проверяю работу и исправляю баги",
+      "duration": "1-2 дня"
+    },
+    {
+      "step": 5,
+      "title": "Сдача проекта",
+      "description": "Передаю готовый проект с документацией",
+      "duration": "1 день"
+    }
+  ],
+  "clients": [
+    {
+      "name": "TechCorp",
+      "logo": ""
+    },
+    {
+      "name": "GameDev Studio",
+      "logo": ""
+    },
+    {
+      "name": "Design Agency",
+      "logo": ""
+    },
+    {
+      "name": "Startup Hub",
+      "logo": ""
+    },
+    {
+      "name": "Creative Lab",
+      "logo": ""
+    },
+    {
+      "name": "Digital Solutions",
+      "logo": ""
+    }
+  ],
+  "badges": [
+    {
+      "text": "Discord Partner",
+      "icon": "award"
+    },
+    {
+      "text": "Top Rated",
+      "icon": "star"
+    },
+    {
+      "text": "Fast Delivery",
+      "icon": "zap"
+    }
+  ]
+}

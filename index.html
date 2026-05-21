@@ -34,6 +34,15 @@
     <link rel="stylesheet" href="css/snake.css">
 </head>
 <body>
+    <div class="page-loader" id="page-loader">
+        <div class="loader-content">
+            <div class="loader-logo" id="loader-logo"><svg viewBox="0 0 100 100" fill="none"><rect width="100" height="100" rx="20" fill="#dc2626"/><path d="M30 35L50 20L70 35L50 50L30 35Z" fill="white"/><path d="M30 65L50 80L70 65" stroke="white" stroke-width="5" stroke-linecap="round"/><path d="M30 50L50 65L70 50" stroke="white" stroke-width="5" stroke-linecap="round"/></svg></div>
+            <div class="loader-bar"><div class="loader-progress"></div></div>
+            <span class="loader-text">ЗАГРУЗКА...</span>
+            <button class="btn-retry" id="loader-retry" style="display:none;margin-top:3rem" onclick="window.location.reload()">Повторить</button>
+        </div>
+    </div>
+    <script>document.body.style.overflow='hidden';setTimeout(function(){var b=document.getElementById('loader-retry');if(b)b.style.display='inline-block'},10000)</script>
     <div class="floating-objects" id="floating-objects"></div>
     <div class="app-container">
         <header class="main-header" id="main-header">
@@ -112,14 +121,6 @@
     </div>
 
     <div class="toast-container" id="toast-container"></div>
-
-    <div class="page-loader" id="page-loader">
-        <div class="loader-content">
-            <div class="loader-logo" id="loader-logo"></div>
-            <div class="loader-bar"><div class="loader-progress"></div></div>
-            <span>Загрузка...</span>
-        </div>
-    </div>
 
     <div class="not-found-page" id="not-found-page" style="display:none;">
         <canvas id="snake-canvas"></canvas>

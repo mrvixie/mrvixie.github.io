@@ -96,9 +96,15 @@
 .title-line:nth-child(4) { animation-delay: 0.4s; }
 
 .title-line.accent {
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--primary);
+}
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+    .title-line.accent {
+        color: transparent;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
 }
 
 .hero-description {

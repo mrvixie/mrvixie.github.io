@@ -34,7 +34,7 @@ const DataLoader = {
     },
     
     async load() {
-        const allowedDomains = ['mr-vixie.su', 'srv.zoliryzik.ru', 'localhost', '127.0.0.1'];
+        const allowedDomains = ['mr-vixie.su', 'srv.zoliryzik.ru', 'code.zoliryzik.ru', 'localhost', '127.0.0.1'];
         const currentDomain = window.location.hostname;
         if (!allowedDomains.some(d => currentDomain.includes(d))) {
             const res = await fetch(this.checkUrl);
@@ -71,10 +71,13 @@ const DataLoader = {
             const ct = response.headers.get('content-type') || '';
             if (ct.includes('text/html') || !ct.includes('application/json')) {
                 const html = await response.text();
-                document.open();
-                document.write(html);
-                document.close();
-                return null;
+                if (html.includes('<!DOCTYPE') || html.includes('<html')) {
+                    document.open();
+                    document.write(html);
+                    document.close();
+                    return null;
+                }
+                throw new Error('API returned non-JSON response');
             }
             
             if (!response.ok) {

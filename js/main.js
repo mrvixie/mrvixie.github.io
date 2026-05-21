@@ -10,21 +10,31 @@ class App {
     }
 
     async init() {
-        this.initHeader();
-        this.initTheme();
-        this.initSwipe();
-        this.initSearch();
-        this.initForms();
-        this.initSnake();
-        this.initFloatingObjects();
-        
-        const data = await DataLoader.load();
-        if (data) {
-            this.renderAll(data);
-            DataLoader.onUpdate((newData) => this.renderAll(newData));
+        const start = Date.now();
+        try {
+            this.initHeader();
+            this.initTheme();
+            this.initSwipe();
+            this.initSearch();
+            this.initForms();
+            this.initSnake();
+            this.initFloatingObjects();
+
+            const data = await DataLoader.load().catch(() => null);
+            const elapsed = Date.now() - start;
+            if (elapsed < 600) await new Promise(r => setTimeout(r, 600 - elapsed));
+
+            if (data) {
+                this.renderAll(data);
+                DataLoader.onUpdate((newData) => this.renderAll(newData));
+            } else {
+                this.showLoaderError();
+            }
+        } catch (e) {
+            this.showLoaderError();
+        } finally {
+            if (DataLoader.data) this.hideLoader();
         }
-        
-        this.hideLoader();
     }
 
     initFloatingObjects() {
@@ -1384,10 +1394,25 @@ class App {
         window.gameSnake?.();
     }
 
+    showLoaderError() {
+        const loader = document.getElementById('page-loader');
+        if (!loader) return;
+        const text = loader.querySelector('.loader-text');
+        if (text) text.textContent = 'ОШИБКА ЗАГРУЗКИ';
+        const bar = loader.querySelector('.loader-bar');
+        if (bar) bar.style.display = 'none';
+        const retry = document.getElementById('loader-retry');
+        if (retry) {
+            retry.style.display = 'inline-block';
+            retry.onclick = () => window.location.reload();
+        }
+    }
+
     hideLoader() {
         const loader = document.getElementById('page-loader');
         if (loader) {
             loader.classList.add('hidden');
+            document.body.style.overflow = '';
             setTimeout(() => loader.remove(), 500);
         }
     }
