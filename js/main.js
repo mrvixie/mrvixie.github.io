@@ -251,11 +251,26 @@ class App {
 
     initDownloadModal() {
         const modal = document.getElementById('download-modal');
-        document.getElementById('download-toggle')?.addEventListener('click', () => {
+        const toggle = document.getElementById('download-toggle');
+
+        const open = () => {
             modal.classList.add('active');
-        });
+            if (location.hash !== '#download') location.hash = 'download';
+        };
+        const close = () => {
+            modal.classList.remove('active');
+            if (location.hash === '#download') history.replaceState(null, '', location.pathname + location.search);
+        };
+
+        toggle?.addEventListener('click', open);
         modal?.querySelectorAll('[data-close-modal]').forEach(el => {
-            el.addEventListener('click', () => modal.classList.remove('active'));
+            el.addEventListener('click', close);
+        });
+
+        if (location.hash === '#download') open();
+        window.addEventListener('hashchange', () => {
+            if (location.hash === '#download') open();
+            else close();
         });
     }
 
