@@ -301,3 +301,70 @@
     gap: 1rem;
     justify-content: center;
 }
+
+.download-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.download-option {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.download-option:hover {
+    border-color: var(--primary);
+    background: rgba(220, 38, 38, 0.05);
+    transform: translateX(4px);
+}
+
+.download-option-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+}
+
+.download-option-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--primary);
+}
+
+.download-option-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.download-option-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1.05rem;
+}
+
+.download-option-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.download-option-size {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    white-space: nowrap;
+}

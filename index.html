@@ -74,12 +74,9 @@
                     <button class="action-btn" id="search-toggle">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                     </button>
-                    <a href="https://api.mr-vixie.su/dist/mr-vixie-launcher_1.2_amd64.deb" class="action-btn download-btn" target="_blank" title="Скачать для Linux (deb)">
+                    <button class="action-btn" id="download-toggle" title="Скачать">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    </a>
-                    <a href="https://api.mr-vixie.su/dist/MR-Vixie-Portable-2.0.1.exe" class="action-btn download-btn" target="_blank" title="Скачать для Windows (exe)">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    </a>
+                    </button>
                 </div>
             </div>
         </header>
@@ -122,6 +119,41 @@
                 </button>
             </div>
             <div class="search-results" id="search-results"></div>
+        </div>
+    </div>
+
+    <div class="modal" id="download-modal">
+        <div class="modal-overlay" data-close-modal></div>
+        <div class="modal-content">
+            <button class="modal-close" data-close-modal>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div class="modal-header">
+                <h3>Скачать приложение</h3>
+                <p>Выберите вашу платформу</p>
+            </div>
+            <div class="modal-body download-options">
+                <a href="https://api.mr-vixie.su/dist/mr-vixie-launcher_1.2_amd64.deb" class="download-option" target="_blank">
+                    <div class="download-option-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v12m0 0-3-3m3 3 3-3"/><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+                    </div>
+                    <div class="download-option-info">
+                        <span class="download-option-name">Linux</span>
+                        <span class="download-option-desc">Debian / Ubuntu / Mint (.deb)</span>
+                    </div>
+                    <span class="download-option-size">~1.2 МБ</span>
+                </a>
+                <a href="https://api.mr-vixie.su/dist/MR-Vixie-Portable-2.0.1.exe" class="download-option" target="_blank">
+                    <div class="download-option-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="6" x2="15" y2="6"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+                    </div>
+                    <div class="download-option-info">
+                        <span class="download-option-name">Windows</span>
+                        <span class="download-option-desc">Портативная версия (.exe)</span>
+                    </div>
+                    <span class="download-option-size">~2.0 МБ</span>
+                </a>
+            </div>
         </div>
     </div>
 

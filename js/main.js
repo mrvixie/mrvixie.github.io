@@ -16,6 +16,7 @@ class App {
             this.initTheme();
             this.initSwipe();
             this.initSearch();
+            this.initDownloadModal();
             this.initForms();
             this.initSnake();
             this.initFloatingObjects();
@@ -245,6 +246,16 @@ class App {
         });
         modal?.addEventListener('click', (e) => {
             if (e.target === modal) modal.classList.remove('active');
+        });
+    }
+
+    initDownloadModal() {
+        const modal = document.getElementById('download-modal');
+        document.getElementById('download-toggle')?.addEventListener('click', () => {
+            modal.classList.add('active');
+        });
+        modal?.querySelectorAll('[data-close-modal]').forEach(el => {
+            el.addEventListener('click', () => modal.classList.remove('active'));
         });
     }
 
